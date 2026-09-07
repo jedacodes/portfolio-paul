@@ -1,0 +1,572 @@
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Paul Femi-Adejobi — Tech Consultant (Data & AI), Lagos" },
+      {
+        name: "description",
+        content:
+          "Data, AI and technology consulting portfolio: Power BI, SQL, Python and Excel projects by Paul Femi-Adejobi, Lagos, Nigeria.",
+      },
+      { property: "og:title", content: "Paul Femi-Adejobi — Tech Consultant (Data & AI)" },
+      {
+        property: "og:description",
+        content:
+          "Selected analytics, AI-readiness and strategy work, experience, certifications and awards. Lagos-based, working worldwide.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Index,
+});
+
+const projects = [
+  {
+    no: "01",
+    sector: "Retail / Fashion",
+    title: "Sales Intelligence Dashboard",
+    org: "Vintage Couture",
+    intro:
+      "Analyzed transactional sales data to uncover revenue drivers, purchasing behaviour, and product performance.",
+    bullets: [
+      "Revenue, order-volume and average order value analysis",
+      "Best-selling vs. underperforming SKUs",
+      "Customer purchasing patterns in an interactive dashboard",
+    ],
+    tags: ["Power BI", "Excel"],
+    lead: "Power BI",
+  },
+  {
+    no: "02",
+    sector: "Customer Analytics",
+    title: "Customer Retention Dashboard",
+    org: "Customer Analytics",
+    intro:
+      "Explored customer behaviour to understand retention, repeat purchasing, and potential churn signals.",
+    bullets: [
+      "Customer lifecycle and segmentation analysis",
+      "Retention and churn indicators",
+      "Repeat-purchase behaviour in interactive reporting",
+    ],
+    tags: ["Excel"],
+    lead: "Excel",
+  },
+  {
+    no: "03",
+    sector: "Public Health",
+    title: "COVID-19 Data Exploration",
+    org: "Public Health",
+    intro:
+      "Used SQL to explore global COVID-19 data and identify meaningful trends across infections and vaccination.",
+    bullets: [
+      "CTEs, joins, window functions and aggregations",
+      "Infection-rate analysis across regions",
+      "Vaccination trend exploration",
+    ],
+    tags: ["SQL"],
+    lead: "SQL",
+  },
+  {
+    no: "04",
+    sector: "Health & Fitness",
+    title: "Fitness Dataset Analysis",
+    org: "Health & Fitness",
+    intro:
+      "Cleaned and transformed raw fitness data into meaningful health and activity indicators, then built an interactive reporting dashboard.",
+    bullets: [
+      "Data cleaning and transformation",
+      "BMI and activity performance indicators",
+      "Interactive visualization and reporting",
+    ],
+    tags: ["Power BI", "Excel"],
+    lead: "Power BI",
+  },
+  {
+    no: "05",
+    sector: "Python Analytics",
+    title: "Health Metrics Classification System",
+    org: "Python Analytics",
+    intro:
+      "Built a modular Python system that processes health-related inputs and translates them into structured classifications and visual insights.",
+    bullets: [
+      "Modular Python functions and Pandas pipelines",
+      "Structured data classification",
+      "Distribution analysis with Matplotlib",
+    ],
+    tags: ["Python", "Pandas", "Matplotlib"],
+    lead: "Python",
+  },
+];
+
+const roles = [
+  {
+    period: "Feb 2026 — Present",
+    title: "Research, Strategy & Intelligence Analyst",
+    org: "Dataleum · Lagos",
+    note: "Research and analysis behind strategic decisions — market and industry research, opportunity assessment, assumption testing, and capability-building across data, AI and technology.",
+  },
+  {
+    period: "Mar 2025 — Feb 2026",
+    title: "Business Strategy Analyst",
+    org: "NoemDek · Lagos",
+    note: "Energy, healthcare and consumer-facing initiatives — financial modelling, market research, due diligence, product requirements and grant proposals.",
+  },
+  {
+    period: "Sep 2025 — Dec 2025",
+    title: "Business Analyst",
+    org: "YouBloom · Remote",
+    note: "Connected product, design and engineering — turning user feedback and business requirements into prioritized product decisions and roadmap support.",
+  },
+  {
+    period: "Dec 2024",
+    title: "BI Analyst — Simulation",
+    org: "PwC · Forage",
+    note: "Built executive Power BI dashboards to investigate workforce and leadership trends, identify key drivers and develop recommendations.",
+  },
+  {
+    period: "Jul 2024 — Oct 2024",
+    title: "Data Analytics & Visualization Intern — Simulation",
+    org: "Accenture · Forage",
+    note: "Cleaned and joined seven datasets to identify the content categories driving engagement, and translated findings into recommendations.",
+  },
+  {
+    period: "Aug 2022 — Oct 2022",
+    title: "Data & IT Intern",
+    org: "Fibernet · Ogun",
+    note: "Supported database operations and documentation for a live student-management system, making processes usable for non-technical staff.",
+  },
+];
+
+const certs = [
+  "Microsoft Power BI Data Analyst",
+  "Microsoft AI Business Professional",
+  "Microsoft Fabric Analytics Engineer",
+  "Google Cloud Generative AI Leader",
+  "Microsoft AI Fluency",
+  "Google Cloud Google Sheets",
+  "AWS / Udacity AI Practitioner",
+  "DataCamp Data Analyst Associate",
+  "DataCamp Data Literacy",
+  "DSN Python for Data Science & ML",
+  "HackerRank Software Engineering",
+  "Dataleum Project Management",
+  "Treford Technical Project Manager",
+];
+
+const awards = [
+  { name: "Innovator of the Quarter — Dataleum", year: "2026" },
+  { name: "Best Graduating Student — Dataleum", year: "2026" },
+  { name: "Tech Savvy of the Year, Nominee — Bowen Awards", year: "2024" },
+  { name: "Winner — National IT Competition", year: "2023" },
+  { name: "First Runner-Up — BCMQ Competition", year: "2022" },
+];
+
+const affiliations = [
+  { name: "ComputeX", role: "Program Coordinator / PM" },
+  { name: "Cowrywise", role: "Ambassador · FSI" },
+  { name: "Polygon Guild", role: "Contributor · Campus Tour" },
+  { name: "HOGGOS", role: "Part-Time Tutor" },
+  { name: "Dataleum", role: "Data Analytics Facilitator" },
+  { name: "Association of Responsible AI (ARAI)", role: "Subject Matter Expert" },
+];
+
+function Index() {
+  return (
+    <main className="bg-paper text-ink">
+      {/* top strip */}
+      <div className="bg-ink text-paper font-mono text-[11px] uppercase tracking-[0.2em]">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between border-b border-line px-6 py-3">
+          <span className="text-paper">Paul Femi-Adejobi</span>
+          <span className="hidden items-center gap-6 text-mute sm:flex">
+            <span className="flex items-center gap-1.5">
+              <span className="size-1.5 rounded-full bg-signal" />
+              Open to opportunities
+            </span>
+            <span>Lagos, NG · Remote</span>
+            <span className="text-signal">GMT+1</span>
+          </span>
+        </div>
+      </div>
+
+      {/* hero */}
+      <section className="relative overflow-hidden bg-ink text-paper">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(246,242,234,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(246,242,234,0.05) 1px,transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+        <div className="pointer-events-none absolute inset-y-0 left-1/4 w-px bg-line" />
+        <div className="pointer-events-none absolute inset-y-0 left-2/4 w-px bg-line" />
+        <div className="pointer-events-none absolute inset-y-0 left-3/4 w-px bg-line" />
+        <div className="pointer-events-none absolute top-2/3 left-3/4 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-paper/40" />
+
+        <div className="relative mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 py-20 lg:py-28">
+          <div className="col-span-12 lg:col-span-8">
+            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+              Tech Consultant (Data &amp; AI)
+            </p>
+            <h1 className="text-balance font-display text-[clamp(3.25rem,11vw,9rem)] font-medium leading-[0.92] tracking-[-0.02em]">
+              Paul Femi-Adejobi
+            </h1>
+            <p className="mt-8 font-display text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.01em] text-paper">
+              I turn data and AI into better decisions.
+            </p>
+            <p className="mt-5 max-w-[56ch] text-pretty font-sans text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-paper/70">
+              I work at the intersection of data, technology, strategy and AI — helping
+              organizations turn complex information into clearer insights, better products
+              and smarter decisions.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-mute">
+              <span className="flex items-center gap-2">
+                <span className="size-1 rounded-full bg-signal" />
+                Data &amp; Analytics
+              </span>
+              <span>AI</span>
+              <span>Strategy</span>
+              <span>Product</span>
+              <span className="text-paper">Lagos · 6.52N 3.38E</span>
+            </div>
+          </div>
+          <div className="col-span-12 flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pt-2 lg:pl-8">
+            <div className="relative overflow-hidden border border-line">
+              <img
+                src="/paul-photo.jpg"
+                alt="Paul Femi-Adejobi portrait"
+                className="aspect-[4/5] w-full object-cover object-[50%_25%]"
+              />
+              <div className="absolute inset-x-0 bottom-0 border-t border-line bg-ink/80 p-3 backdrop-blur-sm">
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mute">
+                  Paul Femi-Adejobi
+                </p>
+                <p className="mt-0.5 font-sans text-xs text-paper/70">
+                  Lagos, Nigeria
+                </p>
+              </div>
+            </div>
+            <div className="space-y-4 border-t border-line pt-6">
+              <div className="flex items-baseline justify-between">
+                <span className="font-mono text-xs uppercase tracking-[0.15em] text-mute">
+                  Experience
+                </span>
+                <span className="font-display text-3xl font-semibold tracking-[-0.02em]">
+                  3<span className="text-signal">+</span> yrs
+                </span>
+              </div>
+              <div className="border-t border-line pt-4">
+                <span className="font-mono text-xs uppercase tracking-[0.15em] text-mute">
+                  Education
+                </span>
+                <p className="mt-2 font-sans text-sm leading-snug text-paper/80">
+                  BSc Computer Science — Bowen University
+                </p>
+                <p className="font-sans text-xs text-paper/60">
+                  2020–2024 · First Class Honours (4.8/5.0)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* projects */}
+      <section className="bg-paper text-ink">
+        <div className="mx-auto max-w-[1400px] px-6 py-20">
+          <div className="mb-10 flex items-end justify-between gap-6">
+            <div>
+              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em]">
+                Selected work
+              </h2>
+              <p className="mt-4 max-w-[46ch] text-pretty font-sans text-base text-ink/60">
+                Turning data into something people can act on.
+              </p>
+            </div>
+            <span className="pb-3 font-mono text-xs uppercase tracking-[0.2em] text-mute">
+              05 / 05
+            </span>
+          </div>
+          <div className="divide-y divide-ink/10 border-y border-ink/10">
+            {projects.map((p) => (
+              <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8">
+                <div className="col-span-12 md:col-span-4">
+                  <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
+                    {p.no} — {p.sector}
+                  </p>
+                  <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+                    {p.title}
+                  </h3>
+                  <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55">
+                    {p.intro}
+                  </p>
+                </div>
+                <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4">
+                  <ul className="space-y-2 font-sans text-sm text-ink/70">
+                    {p.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 ${
+                        t === p.lead ? "text-signal ring-signal/40" : "ring-ink/20"
+                      }`}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* capabilities */}
+      <section className="bg-ink text-paper">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-20">
+          <div className="col-span-12 self-start lg:sticky lg:top-10 lg:col-span-5">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+              Capabilities
+            </p>
+            <h2 className="text-balance font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[0.95] tracking-[-0.02em]">
+              How I create value.
+            </h2>
+            <p className="mt-6 max-w-[46ch] text-pretty font-sans text-paper/65">
+              Four disciplines, one goal: decisions people can stand behind.
+            </p>
+          </div>
+          
+          <div className="col-span-12 lg:col-span-6 lg:col-start-7 mt-8 lg:mt-0">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
+              <div className="border-l border-line pl-5">
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                  Data &amp; business intelligence
+                </p>
+                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
+                  Transforming raw data into reliable analysis, dashboards and decision-ready
+                  insights.
+                </p>
+                <p className="font-sans text-sm text-paper/80">
+                  Power BI · SQL · Python · Excel · Data Visualization
+                </p>
+              </div>
+              <div className="border-l border-line pl-5">
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                  Strategy &amp; research
+                </p>
+                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
+                  Breaking down complex questions, researching markets and turning evidence
+                  into strategic recommendations.
+                </p>
+                <p className="font-sans text-sm text-paper/80">
+                  Business Analysis · Market Research · Financial Modelling · Competitive Analysis
+                </p>
+              </div>
+              <div className="border-l border-line pl-5">
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                  Product &amp; delivery
+                </p>
+                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
+                  Connecting business objectives with user needs and technical execution.
+                </p>
+                <p className="font-sans text-sm text-paper/80">
+                  Requirements Gathering · PRDs · User Research · Roadmapping · Agile
+                </p>
+              </div>
+              <div className="border-l border-line pl-5">
+                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                  AI &amp; automation
+                </p>
+                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
+                  Practical ways to use AI and automation to improve workflows, decision-making
+                  and productivity.
+                </p>
+                <p className="font-sans text-sm text-paper/80">
+                  Generative AI · AI Agents · AI Governance · n8n · Make · Zapier
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* track record */}
+      <section className="bg-paper text-ink">
+        <div className="mx-auto max-w-[1400px] px-6 py-20">
+          <div className="mb-12 flex flex-wrap items-end justify-between gap-6 border-b border-ink/10 pb-6">
+            <div>
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+                Track record
+              </p>
+              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em]">
+                A career built around better decisions.
+              </h2>
+            </div>
+            <span className="pb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
+              2022 → present · 06 roles
+            </span>
+          </div>
+
+          <ol className="relative ml-[7px] border-l border-ink/15 md:ml-0 md:border-l-0">
+            {roles.map((r, i) => (
+              <li
+                key={r.title + r.period}
+                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0"
+              >
+                {/* rail marker (mobile) */}
+                <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-colors group-hover:bg-signal md:hidden" />
+
+                <div className="col-span-12 md:col-span-3 md:border-l md:border-ink/15 md:pl-6 md:transition-colors md:group-hover:border-signal">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-mute">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-1 font-mono text-sm text-ink/70">{r.period}</p>
+                </div>
+
+                <div className="col-span-12 md:col-span-5">
+                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] decoration-signal decoration-2 underline-offset-4 group-hover:underline md:text-2xl">
+                    {r.title}
+                  </h3>
+                  <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.15em] text-ink/50">
+                    {r.org}
+                  </p>
+                </div>
+
+                <div className="col-span-12 md:col-span-4">
+                  <p className="max-w-[46ch] text-pretty font-sans text-sm leading-relaxed text-ink/70">
+                    {r.note}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+
+      {/* certs + awards */}
+      <section className="bg-ink text-paper">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-20">
+          <div className="col-span-12 lg:col-span-7">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+              Certification wall
+            </p>
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
+              12+ industry-recognized certifications.
+            </h2>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {certs.map((c) => (
+                <span
+                  key={c}
+                  className="rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-line lg:pl-8">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+              Recognition
+            </p>
+            <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em]">
+              Milestones that shaped the journey.
+            </h3>
+            <ul className="divide-y divide-line">
+              {awards.map((a) => (
+                <li key={a.name} className="flex items-center justify-between gap-4 py-4">
+                  <span className="font-sans text-base">{a.name}</span>
+                  <span className="font-mono text-xs text-mute">{a.year}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* affiliations */}
+      <section className="bg-paper text-ink">
+        <div className="mx-auto max-w-[1400px] px-6 py-20">
+          <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+            Beyond the job title
+          </p>
+          <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
+            Building, leading, teaching, contributing.
+          </h2>
+          <p className="mt-4 max-w-[52ch] text-pretty font-sans text-base text-ink/60">
+            Some of my most meaningful work happens outside formal job descriptions.
+          </p>
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {affiliations.map((a) => (
+              <div
+                key={a.name}
+                className="flex flex-col justify-between border border-ink/10 p-5 transition-colors hover:border-signal/40"
+              >
+                <span className="font-sans text-lg font-semibold tracking-[-0.01em]">{a.name}</span>
+                <span className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-mute">
+                  {a.role}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* contact */}
+      <section className="bg-signal text-ink">
+        <div className="mx-auto max-w-[1400px] px-6 py-20">
+          <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em]">Contact</p>
+          <h2 className="text-balance font-display text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.92] tracking-[-0.02em]">
+            Let's turn data into decisions.
+          </h2>
+          <p className="mt-6 max-w-[52ch] text-pretty font-sans text-lg text-ink/75">
+            Have a business problem, data challenge, AI opportunity or technology idea?
+            Let's talk.
+          </p>
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+            <a
+              href="mailto:femiadejobipaulolorunjedalo@gmail.com"
+              className="break-all font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+            >
+              femiadejobipaulolorunjedalo@gmail.com
+            </a>
+            <div className="flex flex-col gap-2">
+              <a
+                href="tel:+2349017748447"
+                className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+              >
+                0901 774 8447
+              </a>
+              <a
+                href="tel:+2347089442346"
+                className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+              >
+                0708 944 2346
+              </a>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/paul-femi-adejobi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+            >
+              LinkedIn
+            </a>
+          </div>
+          <div className="mt-16 flex items-center justify-between border-t border-ink/20 pt-6 font-mono text-[11px] uppercase tracking-[0.2em]">
+            <span>© 2026 Paul Femi-Adejobi</span>
+            <span>Lagos, NG</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
