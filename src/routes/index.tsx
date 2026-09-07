@@ -25,15 +25,15 @@ export const Route = createFileRoute("/")({
 const projects = [
   {
     no: "01",
-    sector: "Retail / Fashion",
-    title: "Sales Intelligence Dashboard",
-    org: "Vintage Couture",
+    sector: "Business Intelligence",
+    title: "Optimus-Elite Performance Suite",
+    org: "Executive Overview",
     intro:
-      "Analyzed transactional sales data to uncover revenue drivers, purchasing behaviour, and product performance.",
+      "Executive overview and analysis dashboard, showcasing revenue trends, regional performance, and product profitability.",
     bullets: [
-      "Revenue, order-volume and average order value analysis",
-      "Best-selling vs. underperforming SKUs",
-      "Customer purchasing patterns in an interactive dashboard",
+      "Revenue & profitability trend analysis",
+      "Regional and state-level performance tracking",
+      "Product and customer segment profit distribution",
     ],
     tags: ["Power BI", "Excel"],
     lead: "Power BI",
@@ -376,8 +376,8 @@ function Index() {
                       </p>
                       {p.link ? (
                         <a href={p.link} target="_blank" rel="noopener noreferrer">
-                          <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline text-signal hover:text-signal/80 transition-colors">
-                            {p.title} ↗
+                          <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+                            {p.title}
                           </h3>
                         </a>
                       ) : (
