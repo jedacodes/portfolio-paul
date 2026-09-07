@@ -40,21 +40,86 @@ const projects = [
   },
   {
     no: "02",
-    sector: "Customer Analytics",
-    title: "Customer Retention Dashboard",
-    org: "Customer Analytics",
+    sector: "Media & Entertainment",
+    title: "Skit Makers Report Q1 & Q2",
+    org: "Dataleum",
     intro:
-      "Explored customer behaviour to understand retention, repeat purchasing, and potential churn signals.",
+      "Managed the project and acted as lead analyst to design the report and create interactive dashboards.",
     bullets: [
-      "Customer lifecycle and segmentation analysis",
-      "Retention and churn indicators",
-      "Repeat-purchase behaviour in interactive reporting",
+      "Project Management and team coordination",
+      "Data analysis and dashboard creation",
+      "Report design and industry insights",
     ],
-    tags: ["Excel"],
-    lead: "Excel",
+    tags: ["Project Management", "Data Analysis", "Dashboarding"],
+    lead: "Project Management",
+    link: "https://dataleum.com/wp-content/uploads/2026/07/Dataleum-Q2-2026-Skit-Makers-Report.pdf"
   },
   {
     no: "03",
+    sector: "Human Resources",
+    title: "Tech Attrition Report",
+    org: "Dataleum",
+    intro:
+      "Analyzed human resource data to uncover intelligence regarding tech talent attrition and retention.",
+    bullets: [
+      "HR intelligence analysis",
+      "Data visualization and reporting",
+      "Strategic talent insights",
+    ],
+    tags: ["HR Analytics", "Data Analysis", "Reporting"],
+    lead: "Data Analysis",
+    link: "https://dataleum.com/wp-content/uploads/2026/05/HR-Intelligence-Report-May-2026.pdf"
+  },
+  {
+    no: "04",
+    sector: "Technology Policy",
+    title: "AI Governance in Africa",
+    org: "Dataleum",
+    intro:
+      "Research report on responsible AI innovation, assessing the trillion-dollar growth potential and governance landscape across Africa.",
+    bullets: [
+      "AI policy research and analysis",
+      "Economic impact assessment",
+      "Responsible innovation frameworks",
+    ],
+    tags: ["Research", "AI Governance", "Strategy"],
+    lead: "Research",
+    link: "https://dataleum.com/ai-governance-in-africa-responsible-innovation-and-trillion-dollar-growth/"
+  },
+  {
+    no: "05",
+    sector: "Data Privacy",
+    title: "Data Protection in Africa",
+    org: "Dataleum",
+    intro:
+      "Explored how Africa is redefining data protection in 2026, analyzing regulatory changes and compliance strategies.",
+    bullets: [
+      "Regulatory and compliance research",
+      "Data privacy frameworks",
+      "Strategic industry insights",
+    ],
+    tags: ["Research", "Data Privacy", "Strategy"],
+    lead: "Research",
+    link: "https://dataleum.com/how-africa-is-redefining-data-protection-in-2026/"
+  },
+  {
+    no: "06",
+    sector: "Business Strategy",
+    title: "AI Value Abyss",
+    org: "Dataleum",
+    intro:
+      "Investigated what West African SMEs get wrong about AI adoption and how to bridge the value gap.",
+    bullets: [
+      "SME market analysis",
+      "AI adoption barriers and solutions",
+      "Strategic business recommendations",
+    ],
+    tags: ["Research", "Business Strategy", "AI"],
+    lead: "Business Strategy",
+    link: "https://dataleum.com/ai-value-abyss-what-west-african-smes-get-wrong/"
+  },
+  {
+    no: "07",
     sector: "Public Health",
     title: "COVID-19 Data Exploration",
     org: "Public Health",
@@ -69,7 +134,7 @@ const projects = [
     lead: "SQL",
   },
   {
-    no: "04",
+    no: "08",
     sector: "Health & Fitness",
     title: "Fitness Dataset Analysis",
     org: "Health & Fitness",
@@ -84,7 +149,7 @@ const projects = [
     lead: "Power BI",
   },
   {
-    no: "05",
+    no: "09",
     sector: "Python Analytics",
     title: "Health Metrics Classification System",
     org: "Python Analytics",
@@ -230,7 +295,7 @@ function Index() {
               <span>AI</span>
               <span>Strategy</span>
               <span>Product</span>
-              <span className="text-paper">Lagos · 6.52N 3.38E</span>
+              <span className="text-paper">Lagos</span>
             </div>
           </div>
           <div className="col-span-12 flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pt-2 lg:pl-8">
@@ -297,9 +362,17 @@ function Index() {
                   <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
                     {p.no} — {p.sector}
                   </p>
-                  <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
-                    {p.title}
-                  </h3>
+                  {p.link ? (
+                    <a href={p.link} target="_blank" rel="noopener noreferrer">
+                      <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline text-signal hover:text-signal/80 transition-colors">
+                        {p.title} ↗
+                      </h3>
+                    </a>
+                  ) : (
+                    <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+                      {p.title}
+                    </h3>
+                  )}
                   <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55">
                     {p.intro}
                   </p>
