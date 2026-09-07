@@ -156,4 +156,177 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Keyframes ────────────────────────────────────────── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 oklch(0.65 0.222 34 / 0.6); }
+  50%      { opacity: 0.85; box-shadow: 0 0 0 6px oklch(0.65 0.222 34 / 0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Scroll-driven reveal ─────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  animation: slide-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* Stagger children with CSS custom property */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+.stagger > *:nth-child(1) { animation-delay: 0s; }
+.stagger > *:nth-child(2) { animation-delay: 0.08s; }
+.stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.stagger > *:nth-child(4) { animation-delay: 0.24s; }
+.stagger > *:nth-child(5) { animation-delay: 0.32s; }
+.stagger > *:nth-child(6) { animation-delay: 0.40s; }
+.stagger > *:nth-child(7) { animation-delay: 0.48s; }
+.stagger > *:nth-child(8) { animation-delay: 0.56s; }
+.stagger > *:nth-child(9) { animation-delay: 0.64s; }
+
+/* ── Signal dot pulse ─────────────────────────────────── */
+
+.pulse-signal {
+  animation: signal-pulse 2.4s ease-in-out infinite;
+}
+
+/* ── Hover micro-interactions ─────────────────────────── */
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px oklch(0 0 0 / 0.12);
+}
+
+.hover-glow {
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.hover-glow:hover {
+  border-color: oklch(0.65 0.222 34 / 0.5);
+  box-shadow: 0 0 20px -4px oklch(0.65 0.222 34 / 0.15);
+}
+
+/* ── Photo hover ──────────────────────────────────────── */
+
+.photo-hover img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.photo-hover:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Tag hover ────────────────────────────────────────── */
+
+.tag-hover {
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.tag-hover:hover {
+  background-color: oklch(0.65 0.222 34 / 0.08);
+  transform: translateY(-1px);
+}
+
+/* ── Cert shimmer on hover ────────────────────────────── */
+
+.cert-shimmer {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-size: 200% 100%;
+}
+.cert-shimmer:hover {
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    oklch(0.65 0.222 34 / 0.06) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out;
+  transform: translateY(-2px);
+}
+
+/* ── Hero entrance (one-time, not scroll-driven) ──────── */
+
+.hero-title {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+
+.hero-subtitle {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+.hero-text {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+.hero-tags {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+}
+
+.hero-badge {
+  opacity: 0;
+  animation: fade-in 0.6s ease 0.1s forwards;
+}
+
+.hero-sidebar {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
 }

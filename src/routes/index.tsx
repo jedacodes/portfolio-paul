@@ -251,7 +251,7 @@ function Index() {
           <span className="text-paper">Paul Femi-Adejobi</span>
           <span className="hidden items-center gap-6 text-mute sm:flex">
             <span className="flex items-center gap-1.5">
-              <span className="size-1.5 rounded-full bg-signal" />
+              <span className="size-1.5 rounded-full bg-signal pulse-signal" />
               Open to opportunities
             </span>
             <span>Lagos, NG · Remote</span>
@@ -277,24 +277,24 @@ function Index() {
 
         <div className="relative mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 py-20 lg:py-28">
           <div className="col-span-12 lg:col-span-8">
-            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em] text-signal hero-badge">
               Analyst | Tech Consultant (Data &amp; AI)
             </p>
-            <h1 className="text-balance font-display text-[clamp(3.25rem,11vw,9rem)] font-medium leading-[0.92] tracking-[-0.02em]">
+            <h1 className="text-balance font-display text-[clamp(3.25rem,11vw,9rem)] font-medium leading-[0.92] tracking-[-0.02em] hero-title">
               Paul Femi-Adejobi
             </h1>
-            <p className="mt-8 font-sans text-[clamp(1.15rem,1.8vw,1.5rem)] font-light leading-relaxed text-paper/90">
+            <p className="mt-8 font-sans text-[clamp(1.15rem,1.8vw,1.5rem)] font-light leading-relaxed text-paper/90 hero-subtitle">
               I help businesses drive growth through Data-Driven Insights & AI
             </p>
-            <p className="mt-5 max-w-[56ch] text-pretty font-sans text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-paper/70">
+            <p className="mt-5 max-w-[56ch] text-pretty font-sans text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-paper/70 hero-text">
               I work at the intersection of data, technology, strategy and AI — helping
               organizations turn complex information into clearer insights, better products
               and smarter decisions.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-mute">
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-mute hero-tags">
               <span className="flex items-center gap-2">
-                <span className="size-1 rounded-full bg-signal" />
+                <span className="size-1 rounded-full bg-signal pulse-signal" />
                 Data &amp; Analytics
               </span>
               <span>AI</span>
@@ -302,8 +302,8 @@ function Index() {
               <span>Product</span>
             </div>
           </div>
-          <div className="col-span-12 flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pt-2 lg:pl-8">
-            <div className="relative overflow-hidden border border-line">
+          <div className="col-span-12 flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pt-2 lg:pl-8 hero-sidebar">
+            <div className="relative overflow-hidden border border-line photo-hover">
               <img
                 src="/paul-photo.jpg"
                 alt="Paul Femi-Adejobi portrait"
@@ -348,10 +348,10 @@ function Index() {
         <div className="mx-auto max-w-[1400px] px-6 py-20">
           <div className="mb-10 flex items-end justify-between gap-6">
             <div>
-              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em]">
+              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em] reveal">
                 Selected work
               </h2>
-              <p className="mt-4 max-w-[46ch] text-pretty font-sans text-base text-ink/60">
+              <p className="mt-4 max-w-[46ch] text-pretty font-sans text-base text-ink/60 reveal">
                 Turning data into something people can act on.
               </p>
             </div>
@@ -369,7 +369,7 @@ function Index() {
               </div>
               <div className="divide-y divide-ink/10 border-y border-ink/10">
                 {section.items.map((p) => (
-                  <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8">
+                  <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8 reveal">
                     <div className="col-span-12 md:col-span-4">
                       <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
                         {p.no} — {p.sector}
@@ -400,7 +400,7 @@ function Index() {
                       {p.tags.map((t) => (
                         <span
                           key={t}
-                          className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 ${
+                          className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 tag-hover ${
                             t === p.lead ? "text-signal ring-signal/40" : "ring-ink/20"
                           }`}
                         >
@@ -423,16 +423,16 @@ function Index() {
             <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
               Capabilities
             </p>
-            <h2 className="text-balance font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[0.95] tracking-[-0.02em]">
+            <h2 className="text-balance font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[0.95] tracking-[-0.02em] reveal">
               How I create value.
             </h2>
-            <p className="mt-6 max-w-[46ch] text-pretty font-sans text-paper/65">
+            <p className="mt-6 max-w-[46ch] text-pretty font-sans text-paper/65 reveal">
               Four disciplines, one goal: decisions people can stand behind.
             </p>
           </div>
           
           <div className="col-span-12 lg:col-span-6 lg:col-start-7 mt-8 lg:mt-0">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 stagger">
               <div className="border-l border-line pl-5">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   Data &amp; business intelligence
@@ -493,7 +493,7 @@ function Index() {
               <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
                 Track record
               </p>
-              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em]">
+              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em] reveal">
                 A career built around better decisions.
               </h2>
             </div>
@@ -553,7 +553,7 @@ function Index() {
               {certs.map((c) => (
                 <span
                   key={c}
-                  className="rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15"
+                  className="rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15 cert-shimmer"
                 >
                   {c}
                 </span>
@@ -595,7 +595,7 @@ function Index() {
             {affiliations.map((a) => (
               <div
                 key={a.name}
-                className="flex flex-col justify-between border border-ink/10 p-5 transition-colors hover:border-signal/40"
+                className="flex flex-col justify-between border border-ink/10 p-5 transition-colors hover:border-signal/40 hover-lift hover-glow"
               >
                 <span className="font-sans text-lg font-semibold tracking-[-0.01em]">{a.name}</span>
                 <span className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-mute">
@@ -611,7 +611,7 @@ function Index() {
       <section className="bg-signal text-ink">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
           <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em]">Contact</p>
-          <h2 className="text-balance font-display text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.92] tracking-[-0.02em]">
+          <h2 className="text-balance font-display text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.92] tracking-[-0.02em] reveal">
             Let's turn data into decisions.
           </h2>
           <p className="mt-6 max-w-[52ch] text-pretty font-sans text-lg text-ink/75">
