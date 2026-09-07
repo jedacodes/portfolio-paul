@@ -40,8 +40,56 @@ const projects = [
   },
   {
     no: "02",
+    sector: "Public Health",
+    title: "COVID-19 Data Exploration",
+    org: "Public Health",
+    intro:
+      "Used SQL to explore global COVID-19 data and identify meaningful trends across infections and vaccination.",
+    bullets: [
+      "CTEs, joins, window functions and aggregations",
+      "Infection-rate analysis across regions",
+      "Vaccination trend exploration",
+    ],
+    tags: ["SQL"],
+    lead: "SQL",
+  },
+  {
+    no: "03",
+    sector: "Health & Fitness",
+    title: "Fitness Dataset Analysis",
+    org: "Health & Fitness",
+    intro:
+      "Cleaned and transformed raw fitness data into meaningful health and activity indicators, then built an interactive reporting dashboard.",
+    bullets: [
+      "Data cleaning and transformation",
+      "BMI and activity performance indicators",
+      "Interactive visualization and reporting",
+    ],
+    tags: ["Power BI", "Excel"],
+    lead: "Power BI",
+  },
+  {
+    no: "04",
+    sector: "Python Analytics",
+    title: "Health Metrics Classification System",
+    org: "Python Analytics",
+    intro:
+      "Built a modular Python system that processes health-related inputs and translates them into structured classifications and visual insights.",
+    bullets: [
+      "Modular Python functions and Pandas pipelines",
+      "Structured data classification",
+      "Distribution analysis with Matplotlib",
+    ],
+    tags: ["Python", "Pandas", "Matplotlib"],
+    lead: "Python",
+  },
+];
+
+const reports = [
+  {
+    no: "01",
     sector: "Media & Entertainment",
-    title: "Skit Makers Report Q1 & Q2",
+    title: "Skit Makers Report Q1 & Q2 '26",
     org: "Dataleum",
     intro:
       "Managed the project and acted as lead analyst to design the report and create interactive dashboards.",
@@ -55,7 +103,7 @@ const projects = [
     link: "https://dataleum.com/wp-content/uploads/2026/07/Dataleum-Q2-2026-Skit-Makers-Report.pdf"
   },
   {
-    no: "03",
+    no: "02",
     sector: "Human Resources",
     title: "Tech Attrition Report",
     org: "Dataleum",
@@ -71,7 +119,7 @@ const projects = [
     link: "https://dataleum.com/wp-content/uploads/2026/05/HR-Intelligence-Report-May-2026.pdf"
   },
   {
-    no: "04",
+    no: "03",
     sector: "Technology Policy",
     title: "AI Governance in Africa",
     org: "Dataleum",
@@ -87,7 +135,7 @@ const projects = [
     link: "https://dataleum.com/ai-governance-in-africa-responsible-innovation-and-trillion-dollar-growth/"
   },
   {
-    no: "05",
+    no: "04",
     sector: "Data Privacy",
     title: "Data Protection in Africa",
     org: "Dataleum",
@@ -103,7 +151,7 @@ const projects = [
     link: "https://dataleum.com/how-africa-is-redefining-data-protection-in-2026/"
   },
   {
-    no: "06",
+    no: "05",
     sector: "Business Strategy",
     title: "AI Value Abyss",
     org: "Dataleum",
@@ -117,51 +165,6 @@ const projects = [
     tags: ["Research", "Business Strategy", "AI"],
     lead: "Business Strategy",
     link: "https://dataleum.com/ai-value-abyss-what-west-african-smes-get-wrong/"
-  },
-  {
-    no: "07",
-    sector: "Public Health",
-    title: "COVID-19 Data Exploration",
-    org: "Public Health",
-    intro:
-      "Used SQL to explore global COVID-19 data and identify meaningful trends across infections and vaccination.",
-    bullets: [
-      "CTEs, joins, window functions and aggregations",
-      "Infection-rate analysis across regions",
-      "Vaccination trend exploration",
-    ],
-    tags: ["SQL"],
-    lead: "SQL",
-  },
-  {
-    no: "08",
-    sector: "Health & Fitness",
-    title: "Fitness Dataset Analysis",
-    org: "Health & Fitness",
-    intro:
-      "Cleaned and transformed raw fitness data into meaningful health and activity indicators, then built an interactive reporting dashboard.",
-    bullets: [
-      "Data cleaning and transformation",
-      "BMI and activity performance indicators",
-      "Interactive visualization and reporting",
-    ],
-    tags: ["Power BI", "Excel"],
-    lead: "Power BI",
-  },
-  {
-    no: "09",
-    sector: "Python Analytics",
-    title: "Health Metrics Classification System",
-    org: "Python Analytics",
-    intro:
-      "Built a modular Python system that processes health-related inputs and translates them into structured classifications and visual insights.",
-    bullets: [
-      "Modular Python functions and Pandas pipelines",
-      "Structured data classification",
-      "Distribution analysis with Matplotlib",
-    ],
-    tags: ["Python", "Pandas", "Matplotlib"],
-    lead: "Python",
   },
 ];
 
@@ -218,6 +221,7 @@ const certs = [
   "HackerRank Software Engineering",
   "Dataleum Project Management",
   "Treford Technical Project Manager",
+  "Ethical Researcher — University of the People",
 ];
 
 const awards = [
@@ -230,7 +234,7 @@ const awards = [
 
 const affiliations = [
   { name: "ComputeX", role: "Program Coordinator / PM" },
-  { name: "Cowrywise", role: "Ambassador · FSI" },
+  { name: "FSI (Financial Services Innovators)", role: "Ambassador" },
   { name: "Polygon Guild", role: "Contributor · Campus Tour" },
   { name: "HOGGOS", role: "Part-Time Tutor" },
   { name: "Dataleum", role: "Data Analytics Facilitator" },
@@ -295,7 +299,6 @@ function Index() {
               <span>AI</span>
               <span>Strategy</span>
               <span>Product</span>
-              <span className="text-paper">Lagos</span>
             </div>
           </div>
           <div className="col-span-12 flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pt-2 lg:pl-8">
@@ -351,54 +354,64 @@ function Index() {
                 Turning data into something people can act on.
               </p>
             </div>
-            <span className="pb-3 font-mono text-xs uppercase tracking-[0.2em] text-mute">
-              05 / 05
-            </span>
           </div>
-          <div className="divide-y divide-ink/10 border-y border-ink/10">
-            {projects.map((p) => (
-              <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8">
-                <div className="col-span-12 md:col-span-4">
-                  <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
-                    {p.no} — {p.sector}
-                  </p>
-                  {p.link ? (
-                    <a href={p.link} target="_blank" rel="noopener noreferrer">
-                      <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline text-signal hover:text-signal/80 transition-colors">
-                        {p.title} ↗
-                      </h3>
-                    </a>
-                  ) : (
-                    <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
-                      {p.title}
-                    </h3>
-                  )}
-                  <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55">
-                    {p.intro}
-                  </p>
-                </div>
-                <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4">
-                  <ul className="space-y-2 font-sans text-sm text-ink/70">
-                    {p.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 ${
-                        t === p.lead ? "text-signal ring-signal/40" : "ring-ink/20"
-                      }`}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+
+          {[
+            { title: "Projects", items: projects },
+            { title: "Reports & Publications", items: reports }
+          ].map((section, idx) => (
+            <div key={section.title} className={idx > 0 ? "mt-24" : "mt-12"}>
+              <div className="mb-8 border-b border-ink/10 pb-4">
+                <h3 className="font-mono text-sm uppercase tracking-[0.2em] text-signal">
+                  {section.title}
+                </h3>
               </div>
-            ))}
-          </div>
+              <div className="divide-y divide-ink/10 border-y border-ink/10">
+                {section.items.map((p) => (
+                  <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8">
+                    <div className="col-span-12 md:col-span-4">
+                      <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
+                        {p.no} — {p.sector}
+                      </p>
+                      {p.link ? (
+                        <a href={p.link} target="_blank" rel="noopener noreferrer">
+                          <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline text-signal hover:text-signal/80 transition-colors">
+                            {p.title} ↗
+                          </h3>
+                        </a>
+                      ) : (
+                        <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+                          {p.title}
+                        </h3>
+                      )}
+                      <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55">
+                        {p.intro}
+                      </p>
+                    </div>
+                    <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4">
+                      <ul className="space-y-2 font-sans text-sm text-ink/70">
+                        {p.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end">
+                      {p.tags.map((t) => (
+                        <span
+                          key={t}
+                          className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 ${
+                            t === p.lead ? "text-signal ring-signal/40" : "ring-ink/20"
+                          }`}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
