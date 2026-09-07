@@ -277,13 +277,13 @@ function Index() {
         <div className="relative mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 py-20 lg:py-28">
           <div className="col-span-12 lg:col-span-8">
             <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
-              Tech Consultant (Data &amp; AI)
+              Analyst | Tech Consultant (Data &amp; AI)
             </p>
             <h1 className="text-balance font-display text-[clamp(3.25rem,11vw,9rem)] font-medium leading-[0.92] tracking-[-0.02em]">
               Paul Femi-Adejobi
             </h1>
             <p className="mt-8 font-display text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.01em] text-paper">
-              I turn data and AI into better decisions.
+              I help businesses drive growth through Data-Driven Insights & AI
             </p>
             <p className="mt-5 max-w-[56ch] text-pretty font-sans text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-paper/70">
               I work at the intersection of data, technology, strategy and AI — helping
