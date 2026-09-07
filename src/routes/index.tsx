@@ -283,7 +283,7 @@ function Index() {
             <h1 className="text-balance font-display text-[clamp(3.25rem,11vw,9rem)] font-medium leading-[0.92] tracking-[-0.02em]">
               Paul Femi-Adejobi
             </h1>
-            <p className="mt-8 font-display text-[clamp(1.75rem,3.2vw,2.75rem)] font-medium leading-[1.05] tracking-[-0.01em] text-paper">
+            <p className="mt-8 font-display text-[clamp(1.5rem,2.5vw,2.25rem)] font-medium leading-[1.05] tracking-[-0.01em] text-paper">
               I help businesses drive growth through Data-Driven Insights & AI
             </p>
             <p className="mt-5 max-w-[56ch] text-pretty font-sans text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-paper/70">
