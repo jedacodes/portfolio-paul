@@ -37,6 +37,7 @@ const projects = [
     ],
     tags: ["Power BI", "Excel"],
     lead: "Power BI",
+    link: "/Sales_Intelligence_Dashboard.pdf",
   },
   {
     no: "02",
