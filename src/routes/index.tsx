@@ -176,7 +176,7 @@ const roles = [
     period: "Feb 2026 — Present",
     title: "Research, Strategy & Intelligence Analyst",
     org: "Dataleum · Lagos",
-    note: "Driving solutions across research, data, AI and technology, while leading analytics projects, developing new products and services, and delivering capability-building sessions for organizations including Access Bank, FMN and One Acre Fund.",
+    note: "Driving solutions across research, data, AI and technology, while leading analytics projects, developing new products and services, and providing consulting and capacity-building solutions for organizations including Access Bank, FMN and One Acre Fund.",
   },
   {
     period: "Mar 2025 — Feb 2026",
