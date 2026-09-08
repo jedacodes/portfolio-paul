@@ -176,7 +176,7 @@ const roles = [
     period: "Feb 2026 — Present",
     title: "Research, Strategy & Intelligence Analyst",
     org: "Dataleum · Lagos",
-    note: "Research and analysis behind strategic decisions — market and industry research, opportunity assessment, assumption testing, and capability-building across data, AI and technology.",
+    note: "Driving strategic solutions across research, data, and AI to address business needs. Leading end-to-end analytical projects and product development, while delivering capability-building consultations for major organizations including Access Bank and FMN.",
   },
   {
     period: "Mar 2025 — Feb 2026",
