@@ -95,7 +95,7 @@ const reports = [
     title: "Skit Makers Report Q1 & Q2 '26",
     org: "Dataleum",
     intro:
-      "Managed the project and acted as lead analyst to design the report and create interactive dashboards.",
+      "Managed the project end-to-end while leading the analysis, dashboard development and report production.",
     bullets: [
       "Project Management and team coordination",
       "Data analysis and dashboard creation",
@@ -111,7 +111,7 @@ const reports = [
     title: "Tech Attrition Report",
     org: "Dataleum",
     intro:
-      "Analyzed human resource data to uncover intelligence regarding tech talent attrition and retention.",
+      "Analyzed HR data to identify patterns in technology talent attrition, retention and hiring dynamics.",
     bullets: [
       "HR intelligence analysis",
       "Data visualization and reporting",
@@ -176,7 +176,7 @@ const roles = [
     period: "Feb 2026 — Present",
     title: "Research, Strategy & Intelligence Analyst",
     org: "Dataleum · Lagos",
-    note: "Driving strategic solutions across research, data, and AI to address business needs. Leading end-to-end analytical projects and product development, while delivering capability-building consultations for major organizations including Access Bank and FMN.",
+    note: "Driving strategic solutions across research, data, AI and technology to address business needs. Leading end-to-end analytical projects and developing new products and services, while managing projects and delivering data, AI and technology capability-building sessions for organizations including Access Bank, FMN and One Acre Fund.",
   },
   {
     period: "Mar 2025 — Feb 2026",
@@ -449,7 +449,7 @@ function Index() {
               How I create value.
             </h2>
             <p className="mt-6 max-w-[46ch] text-pretty font-sans text-paper/65">
-              Four disciplines, one goal: decisions people can stand behind.
+              Four disciplines. One goal: better decisions.
             </p>
           </FadeIn>
           
