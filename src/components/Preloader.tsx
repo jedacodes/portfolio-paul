@@ -14,7 +14,7 @@ const greetings = [
   "안녕하세요",
   "Bawo ni",
   "Sannu",
-  "Hello, I'm Paul"
+  "Hello"
 ];
 
 interface PreloaderProps {
@@ -46,7 +46,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
       className="fixed inset-0 z-50 flex items-center justify-center bg-ink text-paper"
     >
-      <div className="flex overflow-hidden">
+      <div className="flex overflow-hidden items-center">
         <AnimatePresence mode="wait">
           <motion.h2
             key={index}
@@ -57,9 +57,11 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             className="font-display text-[clamp(2.5rem,6vw,5rem)] font-medium tracking-tight"
           >
             {greetings[index]}
-            {index === greetings.length - 1 && <span className="text-signal">.</span>}
           </motion.h2>
         </AnimatePresence>
+        <h2 className="font-display text-[clamp(2.5rem,6vw,5rem)] font-medium tracking-tight whitespace-pre">
+          , I'm Paul<span className="text-signal">.</span>
+        </h2>
       </div>
     </motion.div>
   );

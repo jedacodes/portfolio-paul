@@ -542,7 +542,7 @@ function Index() {
                 </div>
 
                 <div className="col-span-12 md:col-span-5">
-                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] decoration-signal decoration-2 underline-offset-4 group-hover:underline md:text-2xl">
+                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] decoration-signal decoration-2 underline-offset-4 md:text-2xl">
                     {r.title}
                   </h3>
                   <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.15em] text-ink/50">
