@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import HeroScene from "../components/HeroScene";
+import { FadeIn, StaggerList, StaggerItem, AnimatedCounter, MagneticLink, motion } from "../components/motion";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -273,35 +275,45 @@ function Index() {
         <div className="pointer-events-none absolute inset-y-0 left-1/4 w-px bg-line" />
         <div className="pointer-events-none absolute inset-y-0 left-2/4 w-px bg-line" />
         <div className="pointer-events-none absolute inset-y-0 left-3/4 w-px bg-line" />
-        <div className="pointer-events-none absolute top-2/3 left-3/4 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-paper/40 float-dot" />
+        
+        <HeroScene />
 
         <div className="relative mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 py-20 lg:py-28">
-          <div className="col-span-12 lg:col-span-8">
-            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em] text-signal hero-badge">
-              Analyst | Tech Consultant (Data &amp; AI)
-            </p>
-            <h1 className="text-balance font-display text-[clamp(3.25rem,11vw,9rem)] font-medium leading-[0.92] tracking-[-0.02em] hero-title">
-              Paul Femi-Adejobi
-            </h1>
-            <p className="mt-8 font-sans text-[clamp(1.15rem,1.8vw,1.5rem)] font-light leading-relaxed text-paper/90 hero-subtitle">
-              I help businesses drive growth through Data-Driven Insights & AI
-            </p>
-            <p className="mt-5 max-w-[56ch] text-pretty font-sans text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-paper/70 hero-text">
-              I work at the intersection of data, technology, strategy and AI — helping
-              organizations turn complex information into clearer insights, better products
-              and smarter decisions.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-mute hero-tags">
-              <span className="flex items-center gap-2">
-                <span className="size-1 rounded-full bg-signal pulse-signal" />
-                Data &amp; Analytics
-              </span>
-              <span>AI</span>
-              <span>Strategy</span>
-              <span>Product</span>
-            </div>
-          </div>
+          <StaggerList className="col-span-12 lg:col-span-8 relative z-10">
+            <StaggerItem>
+              <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+                Analyst | Tech Consultant (Data &amp; AI)
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <h1 className="text-balance font-display text-[clamp(3.25rem,11vw,9rem)] font-medium leading-[0.92] tracking-[-0.02em]">
+                Paul Femi-Adejobi
+              </h1>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="mt-8 font-sans text-[clamp(1.15rem,1.8vw,1.5rem)] font-light leading-relaxed text-paper/90">
+                I help businesses drive growth through Data-Driven Insights & AI
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <p className="mt-5 max-w-[56ch] text-pretty font-sans text-[clamp(1.05rem,1.4vw,1.25rem)] leading-relaxed text-paper/70">
+                I work at the intersection of data, technology, strategy and AI — helping
+                organizations turn complex information into clearer insights, better products
+                and smarter decisions.
+              </p>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-mute">
+                <span className="flex items-center gap-2">
+                  <span className="size-1 rounded-full bg-signal pulse-signal" />
+                  Data &amp; Analytics
+                </span>
+                <span>AI</span>
+                <span>Strategy</span>
+                <span>Product</span>
+              </div>
+            </StaggerItem>
+          </StaggerList>
           <div className="col-span-12 flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pt-2 lg:pl-8 hero-sidebar">
             <div className="relative overflow-hidden border border-line photo-hover">
               <img
@@ -324,7 +336,7 @@ function Index() {
                   Experience
                 </span>
                 <span className="font-display text-3xl font-semibold tracking-[-0.02em]">
-                  3<span className="text-signal">+</span> yrs
+                  <AnimatedCounter target={3} suffix="+" duration={1.5} /> yrs
                 </span>
               </div>
               <div className="border-t border-line pt-4">
@@ -347,14 +359,14 @@ function Index() {
       <section className="bg-paper text-ink">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
           <div className="mb-10 flex items-end justify-between gap-6">
-            <div>
-              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em] reveal">
+            <FadeIn>
+              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em]">
                 Selected work
               </h2>
-              <p className="mt-4 max-w-[46ch] text-pretty font-sans text-base text-ink/60 reveal">
+              <p className="mt-4 max-w-[46ch] text-pretty font-sans text-base text-ink/60">
                 Turning data into something people can act on.
               </p>
-            </div>
+            </FadeIn>
           </div>
 
           {[
@@ -369,46 +381,48 @@ function Index() {
               </div>
               <div className="divide-y divide-ink/10 border-y border-ink/10">
                 {section.items.map((p) => (
-                  <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8 reveal project-card">
-                    <div className="col-span-12 md:col-span-4">
-                      <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
-                        {p.no} — {p.sector}
-                      </p>
-                      {p.link ? (
-                        <a href={p.link} target="_blank" rel="noopener noreferrer">
+                  <FadeIn key={p.no} direction="up" amount={0.1}>
+                    <motion.div whileHover={{ y: -4, backgroundColor: "var(--color-ink)", color: "var(--color-paper)" }} transition={{ duration: 0.3 }} className="group grid cursor-default grid-cols-12 gap-6 py-8 rounded-xl px-4 -mx-4">
+                      <div className="col-span-12 md:col-span-4">
+                        <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute group-hover:text-paper/60 transition-colors">
+                          {p.no} — {p.sector}
+                        </p>
+                        {p.link ? (
+                          <a href={p.link} target="_blank" rel="noopener noreferrer">
+                            <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+                              {p.title}
+                            </h3>
+                          </a>
+                        ) : (
                           <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
                             {p.title}
                           </h3>
-                        </a>
-                      ) : (
-                        <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
-                          {p.title}
-                        </h3>
-                      )}
-                      <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55">
-                        {p.intro}
-                      </p>
-                    </div>
-                    <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4">
-                      <ul className="space-y-2 font-sans text-sm text-ink/70">
-                        {p.bullets.map((b) => (
-                          <li key={b}>{b}</li>
+                        )}
+                        <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55 group-hover:text-paper/80 transition-colors">
+                          {p.intro}
+                        </p>
+                      </div>
+                      <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4 group-hover:border-paper/20 transition-colors">
+                        <ul className="space-y-2 font-sans text-sm text-ink/70 group-hover:text-paper/70 transition-colors">
+                          {p.bullets.map((b) => (
+                            <li key={b}>{b}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end">
+                        {p.tags.map((t) => (
+                          <span
+                            key={t}
+                            className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 transition-colors ${
+                              t === p.lead ? "text-signal ring-signal/40 group-hover:ring-signal/60" : "ring-ink/20 group-hover:ring-paper/20 text-ink group-hover:text-paper"
+                            }`}
+                          >
+                            {t}
+                          </span>
                         ))}
-                      </ul>
-                    </div>
-                    <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end">
-                      {p.tags.map((t) => (
-                        <span
-                          key={t}
-                          className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 tag-hover ${
-                            t === p.lead ? "text-signal ring-signal/40" : "ring-ink/20"
-                          }`}
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                      </div>
+                    </motion.div>
+                  </FadeIn>
                 ))}
               </div>
             </div>
@@ -419,21 +433,21 @@ function Index() {
       {/* capabilities */}
       <section className="bg-ink text-paper">
         <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-20">
-          <div className="col-span-12 self-start lg:sticky lg:top-10 lg:col-span-5">
+          <FadeIn className="col-span-12 self-start lg:sticky lg:top-10 lg:col-span-5">
             <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
               Capabilities
             </p>
-            <h2 className="text-balance font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[0.95] tracking-[-0.02em] reveal">
+            <h2 className="text-balance font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-[0.95] tracking-[-0.02em]">
               How I create value.
             </h2>
-            <p className="mt-6 max-w-[46ch] text-pretty font-sans text-paper/65 reveal">
+            <p className="mt-6 max-w-[46ch] text-pretty font-sans text-paper/65">
               Four disciplines, one goal: decisions people can stand behind.
             </p>
-          </div>
+          </FadeIn>
           
           <div className="col-span-12 lg:col-span-6 lg:col-start-7 mt-8 lg:mt-0">
-            <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 stagger">
-              <div className="border-l border-line pl-5 border-breathe">
+            <StaggerList className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
+              <StaggerItem className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   Data &amp; business intelligence
                 </p>
@@ -444,8 +458,8 @@ function Index() {
                 <p className="font-sans text-sm text-paper/80">
                   Power BI · SQL · Python · Excel · Data Visualization
                 </p>
-              </div>
-              <div className="border-l border-line pl-5 border-breathe">
+              </StaggerItem>
+              <StaggerItem className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   Strategy &amp; research
                 </p>
@@ -456,8 +470,8 @@ function Index() {
                 <p className="font-sans text-sm text-paper/80">
                   Business Analysis · Market Research · Financial Modelling · Competitive Analysis
                 </p>
-              </div>
-              <div className="border-l border-line pl-5 border-breathe">
+              </StaggerItem>
+              <StaggerItem className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   Product &amp; delivery
                 </p>
@@ -467,8 +481,8 @@ function Index() {
                 <p className="font-sans text-sm text-paper/80">
                   Requirements Gathering · PRDs · User Research · Roadmapping · Agile
                 </p>
-              </div>
-              <div className="border-l border-line pl-5 border-breathe">
+              </StaggerItem>
+              <StaggerItem className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   AI &amp; automation
                 </p>
@@ -479,8 +493,8 @@ function Index() {
                 <p className="font-sans text-sm text-paper/80">
                   Generative AI · AI Agents · AI Governance · n8n · Make · Zapier
                 </p>
-              </div>
-            </div>
+              </StaggerItem>
+            </StaggerList>
           </div>
         </div>
       </section>
@@ -489,14 +503,14 @@ function Index() {
       <section className="bg-paper text-ink">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6 border-b border-ink/10 pb-6">
-            <div>
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
+            <FadeIn direction="left">
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
                 Track record
               </p>
-              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em] reveal">
+              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em]">
                 A career built around better decisions.
               </h2>
-            </div>
+            </FadeIn>
             <span className="pb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
               2022 → present · 06 roles
             </span>
@@ -504,9 +518,10 @@ function Index() {
 
           <ol className="relative ml-[7px] border-l border-ink/15 md:ml-0 md:border-l-0">
             {roles.map((r, i) => (
-              <li
+              <FadeIn
                 key={r.title + r.period}
-                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0 role-reveal"
+                direction="left"
+                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0"
               >
                 {/* rail marker (mobile) */}
                 <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-colors group-hover:bg-signal md:hidden" />
@@ -532,7 +547,7 @@ function Index() {
                     {r.note}
                   </p>
                 </div>
-              </li>
+              </FadeIn>
             ))}
           </ol>
         </div>
@@ -542,37 +557,39 @@ function Index() {
       {/* certs + awards */}
       <section className="bg-ink text-paper">
         <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-20">
-          <div className="col-span-12 lg:col-span-7">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
+          <FadeIn className="col-span-12 lg:col-span-7">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
               Certification wall
             </p>
-            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em] reveal">
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
               12+ industry-recognized certifications.
             </h2>
-            <div className="mt-8 flex flex-wrap gap-2.5 stagger">
+            <StaggerList className="mt-8 flex flex-wrap gap-2.5">
               {certs.map((c) => (
-                <span
+                <StaggerItem
                   key={c}
                   className="rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15 cert-shimmer"
                 >
                   {c}
-                </span>
+                </StaggerItem>
               ))}
-            </div>
-          </div>
+            </StaggerList>
+          </FadeIn>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-line lg:pl-8">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
-              Recognition
-            </p>
-            <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em] reveal">
-              Milestones that shaped the journey.
-            </h3>
+            <FadeIn direction="right">
+              <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+                Recognition
+              </p>
+              <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em]">
+                Milestones that shaped the journey.
+              </h3>
+            </FadeIn>
             <ul className="divide-y divide-line">
               {awards.map((a) => (
-                <li key={a.name} className="flex items-center justify-between gap-4 py-4 award-slide">
+                <FadeIn key={a.name} direction="right" amount={0.5} className="flex items-center justify-between gap-4 py-4">
                   <span className="font-sans text-base">{a.name}</span>
                   <span className="font-mono text-xs text-mute">{a.year}</span>
-                </li>
+                </FadeIn>
               ))}
             </ul>
           </div>
@@ -582,71 +599,79 @@ function Index() {
       {/* affiliations */}
       <section className="bg-paper text-ink">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
-          <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
-            Beyond the job title
-          </p>
-          <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em] reveal">
-            Building, leading, teaching, contributing.
-          </h2>
-          <p className="mt-4 max-w-[52ch] text-pretty font-sans text-base text-ink/60">
-            Some of my most meaningful work happens outside formal job descriptions.
-          </p>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 stagger">
+          <FadeIn direction="up">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+              Beyond the job title
+            </p>
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
+              Building, leading, teaching, contributing.
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-pretty font-sans text-base text-ink/60">
+              Some of my most meaningful work happens outside formal job descriptions.
+            </p>
+          </FadeIn>
+          <StaggerList className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {affiliations.map((a) => (
-              <div
+              <StaggerItem
                 key={a.name}
-                className="flex flex-col justify-between border border-ink/10 p-5 transition-colors hover:border-signal/40 hover-lift hover-glow"
               >
-                <span className="font-sans text-lg font-semibold tracking-[-0.01em]">{a.name}</span>
-                <span className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-mute">
-                  {a.role}
-                </span>
-              </div>
+                <motion.div
+                  whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.1)", borderColor: "var(--color-signal)" }}
+                  className="flex flex-col justify-between border border-ink/10 p-5 h-full bg-paper"
+                >
+                  <span className="font-sans text-lg font-semibold tracking-[-0.01em]">{a.name}</span>
+                  <span className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-mute">
+                    {a.role}
+                  </span>
+                </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerList>
         </div>
       </section>
 
       {/* contact */}
       <section className="bg-signal text-ink">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
-          <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em]">Contact</p>
-          <h2 className="text-balance font-display text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.92] tracking-[-0.02em] reveal">
-            Let's turn data into decisions.
-          </h2>
-          <p className="mt-6 max-w-[52ch] text-pretty font-sans text-lg text-ink/75">
-            Have a business problem, data challenge, AI opportunity or technology idea?
-            Let's talk.
-          </p>
+          <FadeIn>
+            <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em]">Contact</p>
+            <h2 className="text-balance font-display text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.92] tracking-[-0.02em]">
+              Let's turn data into decisions.
+            </h2>
+            <p className="mt-6 max-w-[52ch] text-pretty font-sans text-lg text-ink/75">
+              Have a business problem, data challenge, AI opportunity or technology idea?
+              Let's talk.
+            </p>
+          </FadeIn>
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
-            <a
+            <MagneticLink
               href="mailto:femiadejobipaulolorunjedalo@gmail.com"
-              className="break-all font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] link-animate"
+              className="break-all font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
             >
               femiadejobipaulolorunjedalo@gmail.com
-            </a>
-            <div className="flex flex-col gap-2">
-              <a
+            </MagneticLink>
+            <div className="flex flex-col gap-2 items-start">
+              <MagneticLink
                 href="tel:+2349017748447"
-                className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] link-animate"
+                className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
               >
                 0901 774 8447
-              </a>
-              <a
+              </MagneticLink>
+              <MagneticLink
                 href="tel:+2347089442346"
-                className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] link-animate"
+                className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
               >
                 0708 944 2346
-              </a>
+              </MagneticLink>
             </div>
-            <a
+            <MagneticLink
               href="https://www.linkedin.com/in/paul-femi-adejobi"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] link-animate"
+              className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
             >
               LinkedIn
-            </a>
+            </MagneticLink>
           </div>
           <div className="mt-16 flex items-center justify-between border-t border-ink/20 pt-6 font-mono text-[11px] uppercase tracking-[0.2em]">
             <span>© 2026 Paul Femi-Adejobi</span>
