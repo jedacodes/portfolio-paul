@@ -651,23 +651,21 @@ function Index() {
               Let's talk.
             </p>
           </FadeIn>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+          <div className="mt-12 flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-between md:items-center">
             <MagneticLink
               href="mailto:femiadejobipaulolorunjedalo@gmail.com"
-              className="whitespace-nowrap font-sans text-[clamp(0.85rem,1.8vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
+              className="whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
             >
               femiadejobipaulolorunjedalo@gmail.com
             </MagneticLink>
-            <div className="flex flex-col gap-2 items-start">
-              <MagneticLink
-                href="https://wa.me/2349017748447"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
-              >
-                0901 774 8447
-              </MagneticLink>
-            </div>
+            <MagneticLink
+              href="https://wa.me/2349017748447"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
+            >
+              0901 774 8447
+            </MagneticLink>
             <MagneticLink
               href="https://www.linkedin.com/in/paul-femi-adejobi"
               target="_blank"
