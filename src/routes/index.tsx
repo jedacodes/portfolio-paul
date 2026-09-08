@@ -662,7 +662,7 @@ function Index() {
               href="https://wa.me/2349017748447"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
+              className="whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
             >
               WhatsApp
             </MagneticLink>
@@ -670,7 +670,7 @@ function Index() {
               href="https://www.linkedin.com/in/paul-femi-adejobi"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
+              className="whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
             >
               LinkedIn
             </MagneticLink>
