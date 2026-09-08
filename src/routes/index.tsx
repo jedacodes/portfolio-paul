@@ -383,41 +383,81 @@ function Index() {
                 {section.items.map((p) => (
                   <FadeIn key={p.no} direction="up" amount={0.1}>
                     <motion.div 
-                      whileHover={{ 
-                        scale: 1.01,
-                        backgroundColor: "color-mix(in oklch, var(--color-signal) 4%, transparent)", 
-                        boxShadow: "inset 4px 0 0 0 var(--color-signal), 0 15px 35px -10px rgba(0,0,0,0.05)" 
-                      }} 
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }} 
-                      className="group grid cursor-default grid-cols-12 gap-6 py-8 rounded-xl px-6 -mx-6 transition-colors"
+                      initial="rest"
+                      whileHover="hover"
+                      animate="rest"
+                      variants={{
+                        rest: { backgroundColor: "transparent", scale: 1 },
+                        hover: { backgroundColor: "color-mix(in oklch, var(--color-ink) 2%, transparent)", scale: 1.01 }
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }} 
+                      className="group relative grid cursor-default grid-cols-12 gap-6 py-8 rounded-2xl px-6 -mx-6 overflow-hidden"
                     >
-                      <div className="col-span-12 md:col-span-4">
+                      {/* Watermark Number */}
+                      <motion.div 
+                        variants={{
+                          rest: { opacity: 0, scale: 0.9, x: 40, rotate: -5 },
+                          hover: { opacity: 0.04, scale: 1, x: 0, rotate: 0 }
+                        }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        className="absolute -right-8 -bottom-16 pointer-events-none font-display font-bold text-[18rem] leading-none text-ink select-none"
+                      >
+                        {p.no}
+                      </motion.div>
+
+                      {/* Growing Left Accent */}
+                      <motion.div 
+                        variants={{
+                          rest: { opacity: 0, height: 0, top: "50%" },
+                          hover: { opacity: 1, height: "100%", top: "0%" }
+                        }}
+                        transition={{ duration: 0.3, ease: "anticipate" }}
+                        className="absolute left-0 w-1.5 rounded-r-full bg-signal"
+                      />
+
+                      <div className="relative z-10 col-span-12 md:col-span-4">
                         <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute transition-colors group-hover:text-signal">
                           {p.no} — {p.sector}
                         </p>
-                        {p.link ? (
-                          <a href={p.link} target="_blank" rel="noopener noreferrer">
+                        
+                        <div className="flex items-start gap-2">
+                          {p.link ? (
+                            <a href={p.link} target="_blank" rel="noopener noreferrer">
+                              <h3 className="font-sans text-2xl font-semibold leading-tight group-hover:text-signal transition-colors">
+                                {p.title}
+                              </h3>
+                            </a>
+                          ) : (
                             <h3 className="font-sans text-2xl font-semibold leading-tight group-hover:text-signal transition-colors">
                               {p.title}
                             </h3>
-                          </a>
-                        ) : (
-                          <h3 className="font-sans text-2xl font-semibold leading-tight group-hover:text-signal transition-colors">
-                            {p.title}
-                          </h3>
-                        )}
-                        <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/60 group-hover:text-ink/80 transition-colors">
+                          )}
+                          <motion.span 
+                            variants={{
+                              rest: { opacity: 0, x: -10, y: 5 },
+                              hover: { opacity: 1, x: 0, y: 0 }
+                            }}
+                            className="text-signal text-xl leading-none mt-1"
+                          >
+                            {p.link ? '↗' : '→'}
+                          </motion.span>
+                        </div>
+
+                        <p className="mt-4 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/60 group-hover:text-ink/80 transition-colors">
                           {p.intro}
                         </p>
                       </div>
-                      <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4 group-hover:border-signal/30 transition-colors">
-                        <ul className="space-y-2 font-sans text-sm text-ink/70 group-hover:text-ink/90 transition-colors">
+                      <div className="relative z-10 col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-6 group-hover:border-signal/30 transition-colors">
+                        <ul className="space-y-3 font-sans text-sm text-ink/70 group-hover:text-ink/90 transition-colors">
                           {p.bullets.map((b) => (
-                            <li key={b}>{b}</li>
+                            <li key={b} className="flex items-start gap-2">
+                              <span className="text-signal/40 group-hover:text-signal transition-colors">▹</span>
+                              <span>{b}</span>
+                            </li>
                           ))}
                         </ul>
                       </div>
-                      <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end self-start">
+                      <div className="relative z-10 col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end self-start">
                         {p.tags.map((t) => (
                           <span
                             key={t}
