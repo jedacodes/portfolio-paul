@@ -382,39 +382,47 @@ function Index() {
               <div className="divide-y divide-ink/10 border-y border-ink/10">
                 {section.items.map((p) => (
                   <FadeIn key={p.no} direction="up" amount={0.1}>
-                    <motion.div whileHover={{ y: -6, backgroundColor: "#ffffff", boxShadow: "0 20px 40px -15px rgba(0,0,0,0.08)" }} transition={{ duration: 0.3 }} className="group grid cursor-default grid-cols-12 gap-6 py-8 rounded-2xl px-6 -mx-6 transition-colors">
+                    <motion.div 
+                      whileHover={{ 
+                        scale: 1.01,
+                        backgroundColor: "color-mix(in oklch, var(--color-signal) 4%, transparent)", 
+                        boxShadow: "inset 4px 0 0 0 var(--color-signal), 0 15px 35px -10px rgba(0,0,0,0.05)" 
+                      }} 
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }} 
+                      className="group grid cursor-default grid-cols-12 gap-6 py-8 rounded-xl px-6 -mx-6 transition-colors"
+                    >
                       <div className="col-span-12 md:col-span-4">
-                        <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
+                        <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute transition-colors group-hover:text-signal">
                           {p.no} — {p.sector}
                         </p>
                         {p.link ? (
                           <a href={p.link} target="_blank" rel="noopener noreferrer">
-                            <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:text-signal transition-colors">
+                            <h3 className="font-sans text-2xl font-semibold leading-tight group-hover:text-signal transition-colors">
                               {p.title}
                             </h3>
                           </a>
                         ) : (
-                          <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:text-signal transition-colors">
+                          <h3 className="font-sans text-2xl font-semibold leading-tight group-hover:text-signal transition-colors">
                             {p.title}
                           </h3>
                         )}
-                        <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55">
+                        <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/60 group-hover:text-ink/80 transition-colors">
                           {p.intro}
                         </p>
                       </div>
-                      <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4">
-                        <ul className="space-y-2 font-sans text-sm text-ink/70">
+                      <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4 group-hover:border-signal/30 transition-colors">
+                        <ul className="space-y-2 font-sans text-sm text-ink/70 group-hover:text-ink/90 transition-colors">
                           {p.bullets.map((b) => (
                             <li key={b}>{b}</li>
                           ))}
                         </ul>
                       </div>
-                      <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end">
+                      <div className="col-span-12 flex flex-wrap gap-2 md:col-span-4 md:justify-end self-start">
                         {p.tags.map((t) => (
                           <span
                             key={t}
                             className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 transition-colors ${
-                              t === p.lead ? "text-signal ring-signal/40 bg-signal/5" : "ring-ink/20 text-ink bg-ink/5"
+                              t === p.lead ? "text-signal ring-signal/40 bg-signal/10 group-hover:bg-signal group-hover:text-paper" : "ring-ink/20 text-ink bg-ink/5 group-hover:bg-ink/10"
                             }`}
                           >
                             {t}
