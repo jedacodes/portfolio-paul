@@ -176,7 +176,7 @@ const roles = [
     period: "Feb 2026 — Present",
     title: "Research, Strategy & Intelligence Analyst",
     org: "Dataleum · Lagos",
-    note: "Driving strategic solutions across research, data, AI and technology to address business needs. Leading end-to-end analytical projects and developing new products and services, while managing projects and delivering data, AI and technology capability-building sessions for organizations including Access Bank, FMN and One Acre Fund.",
+    note: "Driving solutions across research, data, AI and technology, while leading analytics projects, developing new products and services, and delivering capability-building sessions for organizations including Access Bank, FMN and One Acre Fund.",
   },
   {
     period: "Mar 2025 — Feb 2026",
@@ -216,7 +216,7 @@ const certs = [
   "Microsoft Fabric Analytics Engineer",
   "Google Cloud Generative AI Leader",
   "Microsoft AI Fluency",
-  "Google Cloud Google Sheets",
+  "Google Cloud Google Sheets Certified",
   "AWS / Udacity AI Practitioner",
   "DataCamp Data Analyst Associate",
   "DataCamp Data Literacy",
