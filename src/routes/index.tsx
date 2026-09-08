@@ -664,7 +664,7 @@ function Index() {
               rel="noopener noreferrer"
               className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
             >
-              0901 774 8447
+              WhatsApp
             </MagneticLink>
             <MagneticLink
               href="https://www.linkedin.com/in/paul-femi-adejobi"
