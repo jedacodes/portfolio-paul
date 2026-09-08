@@ -315,13 +315,13 @@ function Index() {
             </StaggerItem>
           </StaggerList>
           <div className="col-span-12 flex flex-col justify-between gap-8 lg:col-span-4 lg:border-l lg:border-line lg:pt-2 lg:pl-8 hero-sidebar">
-            <div className="relative overflow-hidden border border-line photo-hover mx-auto w-[80%] sm:w-[50%] lg:w-[75%] rounded-2xl shadow-xl">
+            <div className="relative overflow-hidden border border-line photo-hover">
               <img
                 src="/paul-photo.jpg"
                 alt="Paul Femi-Adejobi portrait"
                 className="aspect-[4/5] w-full object-cover object-[50%_25%]"
               />
-              <div className="absolute inset-x-0 bottom-0 border-t border-line bg-ink/80 p-3 backdrop-blur-md">
+              <div className="absolute inset-x-0 bottom-0 border-t border-line bg-ink/80 p-3 backdrop-blur-sm">
                 <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-mute">
                   Paul Femi-Adejobi
                 </p>
