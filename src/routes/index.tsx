@@ -382,28 +382,28 @@ function Index() {
               <div className="divide-y divide-ink/10 border-y border-ink/10">
                 {section.items.map((p) => (
                   <FadeIn key={p.no} direction="up" amount={0.1}>
-                    <motion.div whileHover={{ y: -4, backgroundColor: "var(--color-ink)", color: "var(--color-paper)" }} transition={{ duration: 0.3 }} className="group grid cursor-default grid-cols-12 gap-6 py-8 rounded-xl px-4 -mx-4">
+                    <motion.div whileHover={{ y: -6, backgroundColor: "#ffffff", boxShadow: "0 20px 40px -15px rgba(0,0,0,0.08)" }} transition={{ duration: 0.3 }} className="group grid cursor-default grid-cols-12 gap-6 py-8 rounded-2xl px-6 -mx-6 transition-colors">
                       <div className="col-span-12 md:col-span-4">
-                        <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute group-hover:text-paper/60 transition-colors">
+                        <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
                           {p.no} — {p.sector}
                         </p>
                         {p.link ? (
                           <a href={p.link} target="_blank" rel="noopener noreferrer">
-                            <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+                            <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:text-signal transition-colors">
                               {p.title}
                             </h3>
                           </a>
                         ) : (
-                          <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:underline">
+                          <h3 className="font-sans text-2xl font-semibold leading-tight decoration-signal decoration-2 underline-offset-4 group-hover:text-signal transition-colors">
                             {p.title}
                           </h3>
                         )}
-                        <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55 group-hover:text-paper/80 transition-colors">
+                        <p className="mt-3 max-w-[40ch] text-pretty font-sans text-sm leading-relaxed text-ink/55">
                           {p.intro}
                         </p>
                       </div>
-                      <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4 group-hover:border-paper/20 transition-colors">
-                        <ul className="space-y-2 font-sans text-sm text-ink/70 group-hover:text-paper/70 transition-colors">
+                      <div className="col-span-12 md:col-span-4 md:border-l md:border-ink/10 md:pl-4">
+                        <ul className="space-y-2 font-sans text-sm text-ink/70">
                           {p.bullets.map((b) => (
                             <li key={b}>{b}</li>
                           ))}
@@ -414,7 +414,7 @@ function Index() {
                           <span
                             key={t}
                             className={`rounded-[min(1vw,8px)] px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider ring-1 transition-colors ${
-                              t === p.lead ? "text-signal ring-signal/40 group-hover:ring-signal/60" : "ring-ink/20 group-hover:ring-paper/20 text-ink group-hover:text-paper"
+                              t === p.lead ? "text-signal ring-signal/40 bg-signal/5" : "ring-ink/20 text-ink bg-ink/5"
                             }`}
                           >
                             {t}
@@ -646,22 +646,18 @@ function Index() {
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
             <MagneticLink
               href="mailto:femiadejobipaulolorunjedalo@gmail.com"
-              className="break-all font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
+              className="whitespace-nowrap font-sans text-[clamp(0.85rem,1.8vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
             >
               femiadejobipaulolorunjedalo@gmail.com
             </MagneticLink>
             <div className="flex flex-col gap-2 items-start">
               <MagneticLink
-                href="tel:+2349017748447"
+                href="https://wa.me/2349017748447"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
               >
                 0901 774 8447
-              </MagneticLink>
-              <MagneticLink
-                href="tel:+2347089442346"
-                className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
-              >
-                0708 944 2346
               </MagneticLink>
             </div>
             <MagneticLink
