@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const greetings = [
-  "Hello",
   "Bonjour",
   "Hola",
   "Ciao",

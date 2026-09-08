@@ -229,7 +229,7 @@ const certs = [
 
 const awards = [
   { name: "Innovator of the Quarter — Dataleum", year: "2026" },
-  { name: "Best Graduating Student — Dataleum", year: "2026" },
+  { name: "3x Best Graduating Student — Dataleum Academy", year: "2026" },
   { name: "Tech Savvy of the Year, Nominee — Bowen Awards", year: "2024" },
   { name: "Winner — National IT Competition", year: "2023" },
   { name: "First Runner-Up — BCMQ Competition", year: "2022" },
