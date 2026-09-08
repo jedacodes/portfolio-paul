@@ -273,7 +273,7 @@ function Index() {
         <div className="pointer-events-none absolute inset-y-0 left-1/4 w-px bg-line" />
         <div className="pointer-events-none absolute inset-y-0 left-2/4 w-px bg-line" />
         <div className="pointer-events-none absolute inset-y-0 left-3/4 w-px bg-line" />
-        <div className="pointer-events-none absolute top-2/3 left-3/4 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-paper/40" />
+        <div className="pointer-events-none absolute top-2/3 left-3/4 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-paper/40 float-dot" />
 
         <div className="relative mx-auto grid max-w-[1400px] grid-cols-12 gap-6 px-6 py-20 lg:py-28">
           <div className="col-span-12 lg:col-span-8">
@@ -369,7 +369,7 @@ function Index() {
               </div>
               <div className="divide-y divide-ink/10 border-y border-ink/10">
                 {section.items.map((p) => (
-                  <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8 reveal">
+                  <div key={p.no} className="group grid cursor-default grid-cols-12 gap-6 py-8 reveal project-card">
                     <div className="col-span-12 md:col-span-4">
                       <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
                         {p.no} — {p.sector}
@@ -433,7 +433,7 @@ function Index() {
           
           <div className="col-span-12 lg:col-span-6 lg:col-start-7 mt-8 lg:mt-0">
             <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 stagger">
-              <div className="border-l border-line pl-5">
+              <div className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   Data &amp; business intelligence
                 </p>
@@ -445,7 +445,7 @@ function Index() {
                   Power BI · SQL · Python · Excel · Data Visualization
                 </p>
               </div>
-              <div className="border-l border-line pl-5">
+              <div className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   Strategy &amp; research
                 </p>
@@ -457,7 +457,7 @@ function Index() {
                   Business Analysis · Market Research · Financial Modelling · Competitive Analysis
                 </p>
               </div>
-              <div className="border-l border-line pl-5">
+              <div className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   Product &amp; delivery
                 </p>
@@ -468,7 +468,7 @@ function Index() {
                   Requirements Gathering · PRDs · User Research · Roadmapping · Agile
                 </p>
               </div>
-              <div className="border-l border-line pl-5">
+              <div className="border-l border-line pl-5 border-breathe">
                 <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
                   AI &amp; automation
                 </p>
@@ -490,7 +490,7 @@ function Index() {
         <div className="mx-auto max-w-[1400px] px-6 py-20">
           <div className="mb-12 flex flex-wrap items-end justify-between gap-6 border-b border-ink/10 pb-6">
             <div>
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
                 Track record
               </p>
               <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em] reveal">
@@ -506,7 +506,7 @@ function Index() {
             {roles.map((r, i) => (
               <li
                 key={r.title + r.period}
-                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0"
+                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0 role-reveal"
               >
                 {/* rail marker (mobile) */}
                 <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-colors group-hover:bg-signal md:hidden" />
@@ -543,13 +543,13 @@ function Index() {
       <section className="bg-ink text-paper">
         <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-20">
           <div className="col-span-12 lg:col-span-7">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
               Certification wall
             </p>
-            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
+            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em] reveal">
               12+ industry-recognized certifications.
             </h2>
-            <div className="mt-8 flex flex-wrap gap-2.5">
+            <div className="mt-8 flex flex-wrap gap-2.5 stagger">
               {certs.map((c) => (
                 <span
                   key={c}
@@ -561,15 +561,15 @@ function Index() {
             </div>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-line lg:pl-8">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
               Recognition
             </p>
-            <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em]">
+            <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em] reveal">
               Milestones that shaped the journey.
             </h3>
             <ul className="divide-y divide-line">
               {awards.map((a) => (
-                <li key={a.name} className="flex items-center justify-between gap-4 py-4">
+                <li key={a.name} className="flex items-center justify-between gap-4 py-4 award-slide">
                   <span className="font-sans text-base">{a.name}</span>
                   <span className="font-mono text-xs text-mute">{a.year}</span>
                 </li>
@@ -582,16 +582,16 @@ function Index() {
       {/* affiliations */}
       <section className="bg-paper text-ink">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
-          <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+          <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal label-enter">
             Beyond the job title
           </p>
-          <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
+          <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em] reveal">
             Building, leading, teaching, contributing.
           </h2>
           <p className="mt-4 max-w-[52ch] text-pretty font-sans text-base text-ink/60">
             Some of my most meaningful work happens outside formal job descriptions.
           </p>
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 stagger">
             {affiliations.map((a) => (
               <div
                 key={a.name}
@@ -621,20 +621,20 @@ function Index() {
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
             <a
               href="mailto:femiadejobipaulolorunjedalo@gmail.com"
-              className="break-all font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+              className="break-all font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] link-animate"
             >
               femiadejobipaulolorunjedalo@gmail.com
             </a>
             <div className="flex flex-col gap-2">
               <a
                 href="tel:+2349017748447"
-                className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+                className="font-sans text-[clamp(1.5rem,3vw,2.5rem)] font-semibold tracking-[-0.01em] link-animate"
               >
                 0901 774 8447
               </a>
               <a
                 href="tel:+2347089442346"
-                className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+                className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] link-animate"
               >
                 0708 944 2346
               </a>
@@ -643,7 +643,7 @@ function Index() {
               href="https://www.linkedin.com/in/paul-femi-adejobi"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] underline decoration-2 underline-offset-8 hover:decoration-4"
+              className="font-sans text-[clamp(1.25rem,2.4vw,2rem)] font-semibold tracking-[-0.01em] link-animate"
             >
               LinkedIn
             </a>
