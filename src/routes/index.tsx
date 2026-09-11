@@ -673,11 +673,38 @@ function Index() {
                 key={a.name}
               >
                 <motion.div
-                  whileHover={{ y: -5, boxShadow: "0 10px 30px -10px rgba(0,0,0,0.1)", borderColor: "var(--color-signal)" }}
-                  className="flex flex-col justify-between border border-ink/10 p-5 h-full bg-paper"
+                  initial="rest"
+                  whileHover="hover"
+                  animate="rest"
+                  variants={{
+                    rest: { backgroundColor: "var(--color-paper)" },
+                    hover: { backgroundColor: "color-mix(in oklch, var(--color-signal) 2%, var(--color-paper))" }
+                  }}
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-ink/10 p-6 h-full transition-colors"
                 >
-                  <span className="font-sans text-lg font-semibold tracking-[-0.01em]">{a.name}</span>
-                  <span className="mt-2 font-mono text-[11px] uppercase tracking-[0.15em] text-mute">
+                  {/* Glowing hover accent */}
+                  <motion.div 
+                    variants={{
+                      rest: { opacity: 0, scale: 0.5 },
+                      hover: { opacity: 1, scale: 1 }
+                    }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-signal/20 blur-2xl"
+                  />
+                  
+                  <div className="relative z-10 flex justify-between items-start gap-4">
+                    <span className="font-sans text-lg font-semibold tracking-[-0.01em] text-ink group-hover:text-signal transition-colors">{a.name}</span>
+                    <motion.span 
+                      variants={{
+                        rest: { opacity: 0, x: -10, y: 10 },
+                        hover: { opacity: 1, x: 0, y: 0 }
+                      }}
+                      className="text-signal text-xl leading-none"
+                    >
+                      ↗
+                    </motion.span>
+                  </div>
+                  <span className="relative z-10 mt-6 font-mono text-[11px] uppercase tracking-[0.15em] text-mute group-hover:text-ink/80 transition-colors">
                     {a.role}
                   </span>
                 </motion.div>
