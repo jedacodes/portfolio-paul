@@ -241,7 +241,7 @@ const affiliations = [
   { name: "FSI (Financial Services Innovators)", role: "Ambassador", desc: "Advocating for financial inclusion and empowering the fintech community through grassroots innovation." },
   { name: "Polygon Guild", role: "Contributor · Campus Tour", desc: "Driving Web3 education and onboarding the next generation of builders across university campuses." },
   { name: "HOGGOS", role: "Part-Time Tutor", desc: "Mentoring students and breaking down complex topics to build a strong foundation in core technical subjects." },
-  { name: "Dataleum", role: "Data Analytics Facilitator", desc: "Leading hands-on data analytics sessions to upskill individuals and transform them into data-driven professionals." },
+  { name: "Dataleum", role: "Data Analytics Facilitator", desc: "Leading hands-on AI and data analytics sessions to upskill individuals and organizations across different industries, including Access Bank, Myrtle, Dangote, FMN, and One Acre Fund." },
   { name: "Association of Responsible AI (ARAI)", role: "Subject Matter Expert", desc: "Providing expert guidance on AI governance, ethics, and developing responsible implementation frameworks." },
 ];
 
