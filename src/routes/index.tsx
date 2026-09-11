@@ -237,12 +237,12 @@ const awards = [
 ];
 
 const affiliations = [
-  { name: "ComputeX", role: "Program Coordinator / PM" },
-  { name: "FSI (Financial Services Innovators)", role: "Ambassador" },
-  { name: "Polygon Guild", role: "Contributor · Campus Tour" },
-  { name: "HOGGOS", role: "Part-Time Tutor" },
-  { name: "Dataleum", role: "Data Analytics Facilitator" },
-  { name: "Association of Responsible AI (ARAI)", role: "Subject Matter Expert" },
+  { name: "ComputeX", role: "Program Coordinator / PM", desc: "Orchestrating technical programs and managing end-to-end project lifecycles to drive impactful tech initiatives." },
+  { name: "FSI (Financial Services Innovators)", role: "Ambassador", desc: "Advocating for financial inclusion and empowering the fintech community through grassroots innovation." },
+  { name: "Polygon Guild", role: "Contributor · Campus Tour", desc: "Driving Web3 education and onboarding the next generation of builders across university campuses." },
+  { name: "HOGGOS", role: "Part-Time Tutor", desc: "Mentoring students and breaking down complex topics to build a strong foundation in core technical subjects." },
+  { name: "Dataleum", role: "Data Analytics Facilitator", desc: "Leading hands-on data analytics sessions to upskill individuals and transform them into data-driven professionals." },
+  { name: "Association of Responsible AI (ARAI)", role: "Subject Matter Expert", desc: "Providing expert guidance on AI governance, ethics, and developing responsible implementation frameworks." },
 ];
 
 function Index() {
@@ -676,37 +676,47 @@ function Index() {
                   initial="rest"
                   whileHover="hover"
                   animate="rest"
-                  variants={{
-                    rest: { backgroundColor: "var(--color-paper)" },
-                    hover: { backgroundColor: "color-mix(in oklch, var(--color-signal) 2%, var(--color-paper))" }
-                  }}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-ink/10 p-6 h-full transition-colors"
+                  className="group relative h-48 w-full cursor-default"
+                  style={{ perspective: "1000px" }}
                 >
-                  {/* Glowing hover accent */}
-                  <motion.div 
+                  <motion.div
+                    className="relative h-full w-full"
+                    style={{ transformStyle: "preserve-3d" }}
                     variants={{
-                      rest: { opacity: 0, scale: 0.5 },
-                      hover: { opacity: 1, scale: 1 }
+                      rest: { rotateY: 0 },
+                      hover: { rotateY: 180 }
                     }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-signal/20 blur-2xl"
-                  />
-                  
-                  <div className="relative z-10 flex justify-between items-start gap-4">
-                    <span className="font-sans text-lg font-semibold tracking-[-0.01em] text-ink group-hover:text-signal transition-colors">{a.name}</span>
-                    <motion.span 
-                      variants={{
-                        rest: { opacity: 0, x: -10, y: 10 },
-                        hover: { opacity: 1, x: 0, y: 0 }
-                      }}
-                      className="text-signal text-xl leading-none"
+                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                  >
+                    {/* Front */}
+                    <div 
+                      className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-xl border border-ink/10 bg-paper p-6"
+                      style={{ backfaceVisibility: "hidden" }}
                     >
-                      ↗
-                    </motion.span>
-                  </div>
-                  <span className="relative z-10 mt-6 font-mono text-[11px] uppercase tracking-[0.15em] text-mute group-hover:text-ink/80 transition-colors">
-                    {a.role}
-                  </span>
+                      <div className="flex justify-between items-start gap-4">
+                        <span className="font-sans text-lg font-semibold tracking-[-0.01em] text-ink">{a.name}</span>
+                        <span className="text-signal text-xl leading-none opacity-0 group-hover:opacity-100 transition-opacity">
+                          ↗
+                        </span>
+                      </div>
+                      <span className="mt-6 font-mono text-[11px] uppercase tracking-[0.15em] text-mute">
+                        {a.role}
+                      </span>
+                    </div>
+
+                    {/* Back */}
+                    <div 
+                      className="absolute inset-0 flex flex-col justify-center overflow-hidden rounded-xl border border-signal/30 p-6"
+                      style={{ 
+                        backfaceVisibility: "hidden", 
+                        transform: "rotateY(180deg)",
+                        backgroundColor: "color-mix(in oklch, var(--color-signal) 4%, var(--color-paper))"
+                      }}
+                    >
+                      <span className="font-sans text-[13px] leading-relaxed text-ink/90 relative z-10">{a.desc}</span>
+                      <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-signal/20 blur-2xl pointer-events-none" />
+                    </div>
+                  </motion.div>
                 </motion.div>
               </StaggerItem>
             ))}
