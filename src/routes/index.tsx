@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import HeroScene from "../components/HeroScene";
 import { FadeIn, StaggerList, StaggerItem, AnimatedCounter, MagneticLink, motion } from "../components/motion";
+import { SpotlightCard } from "../components/SpotlightCard";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -494,53 +495,61 @@ function Index() {
           </FadeIn>
           
           <div className="col-span-12 lg:col-span-6 lg:col-start-7 mt-8 lg:mt-0">
-            <StaggerList className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
-              <StaggerItem className="border-l border-line pl-5 border-breathe">
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
-                  Data &amp; business intelligence
-                </p>
-                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
-                  Transforming raw data into reliable analysis, dashboards and decision-ready
-                  insights.
-                </p>
-                <p className="font-sans text-sm text-paper/80">
-                  Power BI · SQL · Python · Excel · Data Visualization
-                </p>
+            <StaggerList className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2">
+              <StaggerItem>
+                <SpotlightCard className="h-full border-none !bg-paper/5 ring-1 ring-white/10 p-6 flex flex-col">
+                  <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                    Data &amp; business intelligence
+                  </p>
+                  <p className="mb-4 font-sans text-sm leading-relaxed text-paper/70 flex-grow">
+                    Transforming raw data into reliable analysis, dashboards and decision-ready
+                    insights.
+                  </p>
+                  <p className="font-sans text-[13px] text-paper/90 border-t border-white/10 pt-4 mt-auto">
+                    Power BI · SQL · Python · Excel · Data Visualization
+                  </p>
+                </SpotlightCard>
               </StaggerItem>
-              <StaggerItem className="border-l border-line pl-5 border-breathe">
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
-                  Strategy &amp; research
-                </p>
-                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
-                  Breaking down complex questions, researching markets and turning evidence
-                  into strategic recommendations.
-                </p>
-                <p className="font-sans text-sm text-paper/80">
-                  Business Analysis · Market Research · Financial Modelling · Competitive Analysis
-                </p>
+              <StaggerItem>
+                <SpotlightCard className="h-full border-none !bg-paper/5 ring-1 ring-white/10 p-6 flex flex-col">
+                  <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                    Strategy &amp; research
+                  </p>
+                  <p className="mb-4 font-sans text-sm leading-relaxed text-paper/70 flex-grow">
+                    Breaking down complex questions, researching markets and turning evidence
+                    into strategic recommendations.
+                  </p>
+                  <p className="font-sans text-[13px] text-paper/90 border-t border-white/10 pt-4 mt-auto">
+                    Business Analysis · Market Research · Financial Modelling · Competitive Analysis
+                  </p>
+                </SpotlightCard>
               </StaggerItem>
-              <StaggerItem className="border-l border-line pl-5 border-breathe">
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
-                  Product &amp; delivery
-                </p>
-                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
-                  Connecting business objectives with user needs and technical execution.
-                </p>
-                <p className="font-sans text-sm text-paper/80">
-                  Requirements Gathering · PRDs · User Research · Roadmapping · Agile
-                </p>
+              <StaggerItem>
+                <SpotlightCard className="h-full border-none !bg-paper/5 ring-1 ring-white/10 p-6 flex flex-col">
+                  <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                    Product &amp; delivery
+                  </p>
+                  <p className="mb-4 font-sans text-sm leading-relaxed text-paper/70 flex-grow">
+                    Connecting business objectives with user needs and technical execution.
+                  </p>
+                  <p className="font-sans text-[13px] text-paper/90 border-t border-white/10 pt-4 mt-auto">
+                    Requirements Gathering · PRDs · User Research · Roadmapping · Agile
+                  </p>
+                </SpotlightCard>
               </StaggerItem>
-              <StaggerItem className="border-l border-line pl-5 border-breathe">
-                <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
-                  AI &amp; automation
-                </p>
-                <p className="mb-2 font-sans text-sm leading-relaxed text-paper/60">
-                  Practical ways to use AI and automation to improve workflows, decision-making
-                  and productivity.
-                </p>
-                <p className="font-sans text-sm text-paper/80">
-                  Generative AI · AI Agents · AI Governance · n8n · Make · Zapier
-                </p>
+              <StaggerItem>
+                <SpotlightCard className="h-full border-none !bg-paper/5 ring-1 ring-white/10 p-6 flex flex-col">
+                  <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-signal">
+                    AI &amp; automation
+                  </p>
+                  <p className="mb-4 font-sans text-sm leading-relaxed text-paper/70 flex-grow">
+                    Practical ways to use AI and automation to improve workflows, decision-making
+                    and productivity.
+                  </p>
+                  <p className="font-sans text-[13px] text-paper/90 border-t border-white/10 pt-4 mt-auto">
+                    Generative AI · AI Agents · AI Governance · n8n · Make · Zapier
+                  </p>
+                </SpotlightCard>
               </StaggerItem>
             </StaggerList>
           </div>
