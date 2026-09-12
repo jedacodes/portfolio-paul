@@ -386,6 +386,7 @@ function Index() {
                     <motion.div 
                       initial="rest"
                       whileHover="hover"
+                      whileTap="hover"
                       animate="rest"
                       variants={{
                         rest: { backgroundColor: "transparent", scale: 1 },
@@ -675,8 +676,9 @@ function Index() {
                 <motion.div
                   initial="rest"
                   whileHover="hover"
+                  whileTap="hover"
                   animate="rest"
-                  className="group relative h-48 w-full cursor-default"
+                  className="group relative h-40 w-full cursor-default"
                   style={{ perspective: "1000px" }}
                 >
                   <motion.div

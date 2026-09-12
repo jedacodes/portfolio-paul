@@ -38,6 +38,27 @@ export function SpotlightCard({
     setOpacity(0);
   };
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const div = divRef.current;
+    const rect = div.getBoundingClientRect();
+    const touch = e.touches[0];
+    setPosition({ x: touch.clientX - rect.left, y: touch.clientY - rect.top });
+    setOpacity(1);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+    const div = divRef.current;
+    const rect = div.getBoundingClientRect();
+    const touch = e.touches[0];
+    setPosition({ x: touch.clientX - rect.left, y: touch.clientY - rect.top });
+  };
+
+  const handleTouchEnd = () => {
+    setOpacity(0);
+  };
+
   return (
     <div
       ref={divRef}
@@ -46,6 +67,10 @@ export function SpotlightCard({
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
       className={`relative overflow-hidden rounded-2xl border border-line bg-ink/5 p-8 transition-colors hover:border-signal/30 ${className}`}
     >
       <div
