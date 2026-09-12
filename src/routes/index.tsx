@@ -581,30 +581,38 @@ function Index() {
                 direction="left"
                 className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0"
               >
-                {/* rail marker (mobile) */}
-                <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-colors group-hover:bg-signal md:hidden" />
+                {/* rail marker (mobile) — animated pulse on hover */}
+                <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-all duration-300 group-hover:bg-signal group-hover:scale-150 group-hover:shadow-[0_0_12px_var(--color-signal)] md:hidden" />
 
-                <div className="col-span-12 md:col-span-3 md:border-l md:border-ink/15 md:pl-6 md:transition-colors md:group-hover:border-signal">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-mute">
+                <div className="col-span-12 md:col-span-3 md:border-l md:border-ink/15 md:pl-6 md:transition-all md:duration-300 md:group-hover:border-signal md:group-hover:pl-8">
+                  <motion.span 
+                    className="inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-mute transition-colors group-hover:text-signal"
+                    whileHover={{ scale: 1.1 }}
+                  >
                     {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-1 font-mono text-sm text-ink/70">{r.period}</p>
+                  </motion.span>
+                  <p className="mt-1 font-mono text-sm text-ink/70 transition-colors group-hover:text-ink">{r.period}</p>
                 </div>
 
                 <div className="col-span-12 md:col-span-5">
-                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] decoration-signal decoration-2 underline-offset-4 md:text-2xl">
+                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] transition-colors group-hover:text-signal md:text-2xl">
                     {r.title}
                   </h3>
-                  <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.15em] text-ink/50">
+                  <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.15em] text-ink/50 transition-colors group-hover:text-ink/70">
                     {r.org}
                   </p>
                 </div>
 
                 <div className="col-span-12 md:col-span-4">
-                  <p className="max-w-[46ch] text-pretty font-sans text-sm leading-relaxed text-ink/70">
+                  <p className="max-w-[46ch] text-pretty font-sans text-sm leading-relaxed text-ink/70 transition-all group-hover:text-ink/90 group-hover:translate-x-1">
                     {r.note}
                   </p>
                 </div>
+
+                {/* Hover accent bar at bottom */}
+                <motion.div 
+                  className="absolute -bottom-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-signal to-transparent opacity-0 transition-opacity group-hover:opacity-100"
+                />
               </FadeIn>
             ))}
           </ol>
@@ -624,11 +632,24 @@ function Index() {
             </h2>
             <StaggerList className="mt-8 flex flex-wrap gap-2.5">
               {certs.map((c) => (
-                <StaggerItem
-                  key={c}
-                  className="rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15 cert-shimmer"
-                >
-                  {c}
+                <StaggerItem key={c}>
+                  <motion.span
+                    className="inline-block rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15 cert-shimmer cursor-default select-none"
+                    whileHover={{ 
+                      scale: 1.08, 
+                      backgroundColor: "color-mix(in oklch, var(--color-signal) 15%, transparent)",
+                      borderColor: "var(--color-signal)",
+                      boxShadow: "0 0 20px color-mix(in oklch, var(--color-signal) 25%, transparent)"
+                    }}
+                    whileTap={{ 
+                      scale: 1.08, 
+                      backgroundColor: "color-mix(in oklch, var(--color-signal) 15%, transparent)",
+                      boxShadow: "0 0 20px color-mix(in oklch, var(--color-signal) 25%, transparent)"
+                    }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  >
+                    {c}
+                  </motion.span>
                 </StaggerItem>
               ))}
             </StaggerList>
@@ -644,9 +665,34 @@ function Index() {
             </FadeIn>
             <ul className="divide-y divide-line">
               {awards.map((a) => (
-                <FadeIn key={a.name} direction="right" amount={0.5} className="flex items-center justify-between gap-4 py-4">
-                  <span className="font-sans text-base">{a.name}</span>
-                  <span className="font-mono text-xs text-mute">{a.year}</span>
+                <FadeIn key={a.name} direction="right" amount={0.5}>
+                  <motion.li 
+                    className="flex items-center justify-between gap-4 py-4 cursor-default"
+                    initial="rest"
+                    whileHover="hover"
+                    whileTap="hover"
+                    animate="rest"
+                  >
+                    <motion.span 
+                      className="font-sans text-base"
+                      variants={{
+                        rest: { x: 0, color: "var(--color-paper)" },
+                        hover: { x: 8, color: "var(--color-signal)" }
+                      }}
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    >
+                      {a.name}
+                    </motion.span>
+                    <motion.span 
+                      className="font-mono text-xs"
+                      variants={{
+                        rest: { opacity: 0.4 },
+                        hover: { opacity: 1 }
+                      }}
+                    >
+                      {a.year}
+                    </motion.span>
+                  </motion.li>
                 </FadeIn>
               ))}
             </ul>
@@ -727,8 +773,20 @@ function Index() {
       </section>
 
       {/* contact */}
-      <section className="bg-signal text-ink">
-        <div className="mx-auto max-w-[1400px] px-6 py-20">
+      <section className="bg-signal text-ink relative overflow-hidden">
+        {/* Animated background circles */}
+        <motion.div 
+          className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-ink/5 blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="pointer-events-none absolute -right-24 -bottom-24 h-80 w-80 rounded-full bg-paper/10 blur-3xl"
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.5, 0.2] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        <div className="relative mx-auto max-w-[1400px] px-6 py-20">
           <FadeIn>
             <p className="mb-6 font-mono text-[11px] uppercase tracking-[0.3em]">Contact</p>
             <h2 className="text-balance font-display text-[clamp(3rem,9vw,7.5rem)] font-medium leading-[0.92] tracking-[-0.02em]">
@@ -739,34 +797,51 @@ function Index() {
               Let's talk.
             </p>
           </FadeIn>
-          <div className="mt-12 flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-between md:items-center">
-            <MagneticLink
-              href="mailto:femiadejobipaulolorunjedalo@gmail.com"
-              className="whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
-            >
-              femiadejobipaulolorunjedalo@gmail.com
-            </MagneticLink>
-            <MagneticLink
-              href="https://wa.me/2349017748447"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
-            >
-              WhatsApp
-            </MagneticLink>
-            <MagneticLink
-              href="https://www.linkedin.com/in/paul-femi-adejobi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em] hover:text-paper/80"
-            >
-              LinkedIn
-            </MagneticLink>
-          </div>
-          <div className="mt-16 flex items-center justify-between border-t border-ink/20 pt-6 font-mono text-[11px] uppercase tracking-[0.2em]">
-            <span>© 2026 Paul Femi-Adejobi</span>
-            <span>Lagos, NG</span>
-          </div>
+          <StaggerList className="mt-12 flex flex-col gap-6 md:flex-row md:flex-wrap md:justify-between md:items-center">
+            <StaggerItem>
+              <MagneticLink
+                href="mailto:femiadejobipaulolorunjedalo@gmail.com"
+                className="group relative whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em]"
+              >
+                <span className="relative">
+                  femiadejobipaulolorunjedalo@gmail.com
+                  <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-ink transition-all duration-300 group-hover:w-full" />
+                </span>
+              </MagneticLink>
+            </StaggerItem>
+            <StaggerItem>
+              <MagneticLink
+                href="https://wa.me/2349017748447"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em]"
+              >
+                <span className="relative">
+                  WhatsApp
+                  <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-ink transition-all duration-300 group-hover:w-full" />
+                </span>
+              </MagneticLink>
+            </StaggerItem>
+            <StaggerItem>
+              <MagneticLink
+                href="https://www.linkedin.com/in/paul-femi-adejobi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative whitespace-nowrap font-sans text-[clamp(0.9rem,2vw,1.75rem)] font-semibold tracking-[-0.01em]"
+              >
+                <span className="relative">
+                  LinkedIn
+                  <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-ink transition-all duration-300 group-hover:w-full" />
+                </span>
+              </MagneticLink>
+            </StaggerItem>
+          </StaggerList>
+          <FadeIn direction="up" delay={0.3}>
+            <div className="mt-16 flex items-center justify-between border-t border-ink/20 pt-6 font-mono text-[11px] uppercase tracking-[0.2em]">
+              <span>© 2026 Paul Femi-Adejobi</span>
+              <span>Lagos, NG</span>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </main>
