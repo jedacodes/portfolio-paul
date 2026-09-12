@@ -574,47 +574,49 @@ function Index() {
             </span>
           </div>
 
-          <StaggerList className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <ol className="relative ml-[7px] border-l border-ink/15 md:ml-0 md:border-l-0">
             {roles.map((r, i) => (
-              <StaggerItem key={r.title + r.period}>
-                <SpotlightCard className="group h-full !rounded-2xl border-none !bg-ink/[0.03] ring-1 ring-ink/10 !p-0 overflow-hidden hover:ring-signal/40 transition-all duration-300">
-                  <div className="relative p-6">
-                    {/* Giant watermark number */}
-                    <span className="pointer-events-none absolute -right-2 -top-4 font-display text-[8rem] font-bold leading-none text-ink/[0.04] select-none transition-colors duration-500 group-hover:text-signal/10">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+              <FadeIn
+                key={r.title + r.period}
+                direction="left"
+                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0"
+              >
+                {/* rail marker (mobile) — glows on hover */}
+                <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-all duration-500 group-hover:bg-signal group-hover:scale-[1.8] group-hover:shadow-[0_0_14px_var(--color-signal)] md:hidden" />
 
-                    {/* Left accent bar */}
-                    <motion.div
-                      className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full bg-ink/10 origin-top"
-                      whileHover={{ backgroundColor: "var(--color-signal)", scaleY: 1 }}
-                      initial={{ scaleY: 0.3 }}
-                    />
+                {/* Expanding background highlight on hover */}
+                <motion.div
+                  className="pointer-events-none absolute -left-4 -right-4 -top-2 -bottom-2 rounded-2xl bg-ink/[0.02] opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:-left-6 md:-right-6"
+                />
 
-                    <div className="relative z-10 pl-4">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-signal bg-signal/10 px-2 py-0.5 rounded-full">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="font-mono text-[11px] text-ink/40">{r.period}</span>
-                      </div>
+                <div className="relative z-10 col-span-12 md:col-span-3 md:border-l md:border-ink/15 md:pl-6 md:transition-all md:duration-500 md:group-hover:border-signal md:group-hover:pl-8">
+                  {/* Number badge */}
+                  <span className="inline-flex items-center justify-center size-7 rounded-full bg-ink/5 font-mono text-[10px] tracking-[0.15em] text-ink/40 transition-all duration-300 group-hover:bg-signal/15 group-hover:text-signal">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-2 font-mono text-sm text-ink/50 transition-colors duration-300 group-hover:text-ink/80">{r.period}</p>
+                </div>
 
-                      <h3 className="font-sans text-lg font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-signal md:text-xl">
-                        {r.title}
-                      </h3>
-                      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-ink/40 transition-colors group-hover:text-ink/60">
-                        {r.org}
-                      </p>
+                <div className="relative z-10 col-span-12 md:col-span-5">
+                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] transition-colors duration-300 group-hover:text-signal md:text-2xl">
+                    {r.title}
+                  </h3>
+                  <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.15em] text-ink/40 transition-colors duration-300 group-hover:text-ink/60">
+                    {r.org}
+                  </p>
+                </div>
 
-                      <p className="mt-4 text-pretty font-sans text-sm leading-relaxed text-ink/60 transition-colors group-hover:text-ink/80">
-                        {r.note}
-                      </p>
-                    </div>
-                  </div>
-                </SpotlightCard>
-              </StaggerItem>
+                <div className="relative z-10 col-span-12 md:col-span-4">
+                  <p className="max-w-[46ch] text-pretty font-sans text-sm leading-relaxed text-ink/55 transition-all duration-300 group-hover:text-ink/85 group-hover:translate-x-1">
+                    {r.note}
+                  </p>
+                </div>
+
+                {/* Gradient accent line at bottom */}
+                <div className="absolute -bottom-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-signal/0 to-transparent transition-all duration-500 group-hover:via-signal/60" />
+              </FadeIn>
             ))}
-          </StaggerList>
+          </ol>
         </div>
       </section>
 
@@ -630,6 +632,28 @@ function Index() {
               <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
                 12+ industry-recognized certifications.
               </h2>
+              <StaggerList className="mt-8 flex flex-wrap gap-2.5">
+                {certs.map((c) => (
+                  <StaggerItem key={c}>
+                    <motion.span
+                      className="inline-block rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15 cert-shimmer cursor-default select-none"
+                      whileHover={{ 
+                        scale: 1.08, 
+                        backgroundColor: "color-mix(in oklch, var(--color-signal) 15%, transparent)",
+                        boxShadow: "0 0 20px color-mix(in oklch, var(--color-signal) 25%, transparent)"
+                      }}
+                      whileTap={{ 
+                        scale: 1.08, 
+                        backgroundColor: "color-mix(in oklch, var(--color-signal) 15%, transparent)",
+                        boxShadow: "0 0 20px color-mix(in oklch, var(--color-signal) 25%, transparent)"
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    >
+                      {c}
+                    </motion.span>
+                  </StaggerItem>
+                ))}
+              </StaggerList>
             </FadeIn>
             <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-line lg:pl-8">
               <FadeIn direction="right">
@@ -641,7 +665,7 @@ function Index() {
                 </h3>
               </FadeIn>
               <ul className="divide-y divide-line">
-                {awards.map((a, i) => (
+                {awards.map((a) => (
                   <FadeIn key={a.name} direction="right" amount={0.5}>
                     <motion.li 
                       className="group/award relative flex items-center justify-between gap-4 py-4 cursor-default overflow-hidden"
@@ -650,7 +674,7 @@ function Index() {
                       whileTap="hover"
                       animate="rest"
                     >
-                      {/* Expanding glow bar behind text */}
+                      {/* Expanding glow bar */}
                       <motion.div
                         className="absolute left-0 top-0 bottom-0 bg-signal/10 rounded-r-lg"
                         variants={{
@@ -697,13 +721,11 @@ function Index() {
           </div>
         </div>
 
-        {/* Marquee ticker for certs */}
+        {/* Marquee ticker */}
         <FadeIn>
           <div className="relative border-t border-line py-6">
-            {/* Fade edges */}
             <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" />
             <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" />
-            
             <div className="flex overflow-hidden">
               <motion.div
                 className="flex shrink-0 gap-4"
