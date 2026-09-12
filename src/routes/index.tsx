@@ -574,130 +574,154 @@ function Index() {
             </span>
           </div>
 
-          <ol className="relative ml-[7px] border-l border-ink/15 md:ml-0 md:border-l-0">
+          <StaggerList className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {roles.map((r, i) => (
-              <FadeIn
-                key={r.title + r.period}
-                direction="left"
-                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0"
-              >
-                {/* rail marker (mobile) — animated pulse on hover */}
-                <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-all duration-300 group-hover:bg-signal group-hover:scale-150 group-hover:shadow-[0_0_12px_var(--color-signal)] md:hidden" />
+              <StaggerItem key={r.title + r.period}>
+                <SpotlightCard className="group h-full !rounded-2xl border-none !bg-ink/[0.03] ring-1 ring-ink/10 !p-0 overflow-hidden hover:ring-signal/40 transition-all duration-300">
+                  <div className="relative p-6">
+                    {/* Giant watermark number */}
+                    <span className="pointer-events-none absolute -right-2 -top-4 font-display text-[8rem] font-bold leading-none text-ink/[0.04] select-none transition-colors duration-500 group-hover:text-signal/10">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
 
-                <div className="col-span-12 md:col-span-3 md:border-l md:border-ink/15 md:pl-6 md:transition-all md:duration-300 md:group-hover:border-signal md:group-hover:pl-8">
-                  <motion.span 
-                    className="inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-mute transition-colors group-hover:text-signal"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </motion.span>
-                  <p className="mt-1 font-mono text-sm text-ink/70 transition-colors group-hover:text-ink">{r.period}</p>
-                </div>
+                    {/* Left accent bar */}
+                    <motion.div
+                      className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full bg-ink/10 origin-top"
+                      whileHover={{ backgroundColor: "var(--color-signal)", scaleY: 1 }}
+                      initial={{ scaleY: 0.3 }}
+                    />
 
-                <div className="col-span-12 md:col-span-5">
-                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] transition-colors group-hover:text-signal md:text-2xl">
-                    {r.title}
-                  </h3>
-                  <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.15em] text-ink/50 transition-colors group-hover:text-ink/70">
-                    {r.org}
-                  </p>
-                </div>
+                    <div className="relative z-10 pl-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-signal bg-signal/10 px-2 py-0.5 rounded-full">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="font-mono text-[11px] text-ink/40">{r.period}</span>
+                      </div>
 
-                <div className="col-span-12 md:col-span-4">
-                  <p className="max-w-[46ch] text-pretty font-sans text-sm leading-relaxed text-ink/70 transition-all group-hover:text-ink/90 group-hover:translate-x-1">
-                    {r.note}
-                  </p>
-                </div>
+                      <h3 className="font-sans text-lg font-semibold tracking-[-0.01em] text-ink transition-colors group-hover:text-signal md:text-xl">
+                        {r.title}
+                      </h3>
+                      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-ink/40 transition-colors group-hover:text-ink/60">
+                        {r.org}
+                      </p>
 
-                {/* Hover accent bar at bottom */}
-                <motion.div 
-                  className="absolute -bottom-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-signal to-transparent opacity-0 transition-opacity group-hover:opacity-100"
-                />
-              </FadeIn>
+                      <p className="mt-4 text-pretty font-sans text-sm leading-relaxed text-ink/60 transition-colors group-hover:text-ink/80">
+                        {r.note}
+                      </p>
+                    </div>
+                  </div>
+                </SpotlightCard>
+              </StaggerItem>
             ))}
-          </ol>
+          </StaggerList>
         </div>
       </section>
 
 
       {/* certs + awards */}
-      <section className="bg-ink text-paper">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-12 gap-8 px-6 py-20">
-          <FadeIn className="col-span-12 lg:col-span-7">
-            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
-              Certification wall
-            </p>
-            <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
-              12+ industry-recognized certifications.
-            </h2>
-            <StaggerList className="mt-8 flex flex-wrap gap-2.5">
-              {certs.map((c) => (
-                <StaggerItem key={c}>
-                  <motion.span
-                    className="inline-block rounded-[min(1vw,8px)] px-3 py-2 font-mono text-xs ring-1 ring-paper/15 cert-shimmer cursor-default select-none"
-                    whileHover={{ 
-                      scale: 1.08, 
-                      backgroundColor: "color-mix(in oklch, var(--color-signal) 15%, transparent)",
-                      borderColor: "var(--color-signal)",
-                      boxShadow: "0 0 20px color-mix(in oklch, var(--color-signal) 25%, transparent)"
-                    }}
-                    whileTap={{ 
-                      scale: 1.08, 
-                      backgroundColor: "color-mix(in oklch, var(--color-signal) 15%, transparent)",
-                      boxShadow: "0 0 20px color-mix(in oklch, var(--color-signal) 25%, transparent)"
-                    }}
-                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                  >
-                    {c}
-                  </motion.span>
-                </StaggerItem>
-              ))}
-            </StaggerList>
-          </FadeIn>
-          <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-line lg:pl-8">
-            <FadeIn direction="right">
+      <section className="bg-ink text-paper overflow-hidden">
+        <div className="mx-auto max-w-[1400px] px-6 py-20">
+          <div className="grid grid-cols-12 gap-8">
+            <FadeIn className="col-span-12 lg:col-span-7">
               <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
-                Recognition
+                Certification wall
               </p>
-              <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em]">
-                Milestones that shaped the journey.
-              </h3>
+              <h2 className="font-display text-[clamp(2.5rem,5vw,4rem)] font-medium leading-none tracking-[-0.02em]">
+                12+ industry-recognized certifications.
+              </h2>
             </FadeIn>
-            <ul className="divide-y divide-line">
-              {awards.map((a) => (
-                <FadeIn key={a.name} direction="right" amount={0.5}>
-                  <motion.li 
-                    className="flex items-center justify-between gap-4 py-4 cursor-default"
-                    initial="rest"
-                    whileHover="hover"
-                    whileTap="hover"
-                    animate="rest"
-                  >
-                    <motion.span 
-                      className="font-sans text-base"
-                      variants={{
-                        rest: { x: 0, color: "var(--color-paper)" },
-                        hover: { x: 8, color: "var(--color-signal)" }
-                      }}
-                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            <div className="col-span-12 lg:col-span-5 lg:border-l lg:border-line lg:pl-8">
+              <FadeIn direction="right">
+                <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
+                  Recognition
+                </p>
+                <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em]">
+                  Milestones that shaped the journey.
+                </h3>
+              </FadeIn>
+              <ul className="divide-y divide-line">
+                {awards.map((a, i) => (
+                  <FadeIn key={a.name} direction="right" amount={0.5}>
+                    <motion.li 
+                      className="group/award relative flex items-center justify-between gap-4 py-4 cursor-default overflow-hidden"
+                      initial="rest"
+                      whileHover="hover"
+                      whileTap="hover"
+                      animate="rest"
                     >
-                      {a.name}
-                    </motion.span>
-                    <motion.span 
-                      className="font-mono text-xs"
-                      variants={{
-                        rest: { opacity: 0.4 },
-                        hover: { opacity: 1 }
-                      }}
-                    >
-                      {a.year}
-                    </motion.span>
-                  </motion.li>
-                </FadeIn>
-              ))}
-            </ul>
+                      {/* Expanding glow bar behind text */}
+                      <motion.div
+                        className="absolute left-0 top-0 bottom-0 bg-signal/10 rounded-r-lg"
+                        variants={{
+                          rest: { width: "0%" },
+                          hover: { width: "100%" }
+                        }}
+                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                      />
+                      <div className="relative z-10 flex items-center gap-3">
+                        <motion.span 
+                          className="font-mono text-[10px] text-signal"
+                          variants={{
+                            rest: { opacity: 0, width: 0 },
+                            hover: { opacity: 1, width: "auto" }
+                          }}
+                        >
+                          ◆
+                        </motion.span>
+                        <motion.span 
+                          className="font-sans text-base"
+                          variants={{
+                            rest: { x: 0, color: "var(--color-paper)" },
+                            hover: { x: 4, color: "var(--color-signal)" }
+                          }}
+                          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                        >
+                          {a.name}
+                        </motion.span>
+                      </div>
+                      <motion.span 
+                        className="relative z-10 font-mono text-xs shrink-0"
+                        variants={{
+                          rest: { opacity: 0.4 },
+                          hover: { opacity: 1 }
+                        }}
+                      >
+                        {a.year}
+                      </motion.span>
+                    </motion.li>
+                  </FadeIn>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+
+        {/* Marquee ticker for certs */}
+        <FadeIn>
+          <div className="relative border-t border-line py-6">
+            {/* Fade edges */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" />
+            
+            <div className="flex overflow-hidden">
+              <motion.div
+                className="flex shrink-0 gap-4"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ duration: 35, ease: "linear", repeat: Infinity }}
+              >
+                {[...certs, ...certs].map((c, i) => (
+                  <span
+                    key={`${c}-${i}`}
+                    className="whitespace-nowrap rounded-full px-4 py-2 font-mono text-xs ring-1 ring-paper/15 text-paper/70 hover:ring-signal/50 hover:text-signal hover:bg-signal/10 transition-all duration-300 cursor-default select-none"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </FadeIn>
       </section>
 
       {/* affiliations */}
