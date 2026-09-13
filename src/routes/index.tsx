@@ -664,17 +664,6 @@ function Index() {
                         </motion.span>
                       </div>
 
-                      {/* Arrow */}
-                      <motion.span 
-                        className="text-signal text-lg mt-1 shrink-0"
-                        variants={{
-                          rest: { opacity: 0, x: -8 },
-                          hover: { opacity: 1, x: 0 }
-                        }}
-                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                      >
-                        ↗
-                      </motion.span>
                     </motion.div>
                   </StaggerItem>
                 ))}
