@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const greetings = [
@@ -22,21 +22,32 @@ interface PreloaderProps {
 
 export default function Preloader({ onComplete }: PreloaderProps) {
   const [index, setIndex] = useState(0);
+  const indexRef = useRef(0);
+  const completedRef = useRef(false);
+
+  const handleComplete = useCallback(() => {
+    if (completedRef.current) return;
+    completedRef.current = true;
+    onComplete();
+  }, [onComplete]);
 
   useEffect(() => {
-    if (index < greetings.length - 1) {
-      const timer = setTimeout(() => {
-        setIndex((prev) => prev + 1);
-      }, 150); // Fast cycling speed
-      return () => clearTimeout(timer);
-    } else {
-      // Pause on the final text before completing
-      const timer = setTimeout(() => {
-        onComplete();
-      }, 1000);
+    const lastIndex = greetings.length - 1;
+
+    // Always force to "Hello" (last item) before completing
+    if (indexRef.current >= lastIndex) {
+      setIndex(lastIndex); // Ensure we show "Hello"
+      const timer = setTimeout(handleComplete, 1000);
       return () => clearTimeout(timer);
     }
-  }, [index, onComplete]);
+
+    const timer = setTimeout(() => {
+      indexRef.current += 1;
+      setIndex(indexRef.current);
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, [index, handleComplete]);
 
   return (
     <motion.div
@@ -48,7 +59,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       <div className="flex overflow-hidden items-center">
         <AnimatePresence mode="wait">
           <motion.h2
-            key={index}
+            key={greetings[index]}
             initial={{ y: 40, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
