@@ -601,63 +601,84 @@ function Index() {
                 <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
                   Recognition
                 </p>
-                <h3 className="mb-2 font-display text-2xl font-medium tracking-[-0.01em]">
+                <h3 className="mb-6 font-display text-2xl font-medium tracking-[-0.01em]">
                   Milestones that shaped the journey.
                 </h3>
               </FadeIn>
-              <ul className="divide-y divide-line">
-                {awards.map((a) => (
-                  <FadeIn key={a.name} direction="right" amount={0.5}>
-                    <motion.li 
-                      className="group/award relative flex items-center justify-between gap-4 py-4 cursor-default overflow-hidden"
+              <StaggerList className="space-y-3">
+                {awards.map((a, i) => (
+                  <StaggerItem key={a.name}>
+                    <motion.div 
+                      className="group/award relative flex items-start gap-4 rounded-xl p-4 cursor-default overflow-hidden transition-colors hover:bg-paper/5"
                       initial="rest"
                       whileHover="hover"
                       whileTap="hover"
                       animate="rest"
                     >
-                      {/* Expanding glow bar */}
+                      {/* Animated index circle */}
                       <motion.div
-                        className="absolute left-0 top-0 bottom-0 bg-signal/10 rounded-r-lg"
+                        className="relative shrink-0 flex items-center justify-center size-10 rounded-full border border-paper/15 font-mono text-xs text-paper/50"
                         variants={{
-                          rest: { width: "0%" },
-                          hover: { width: "100%" }
+                          rest: { borderColor: "rgba(255,255,255,0.15)", scale: 1 },
+                          hover: { borderColor: "var(--color-signal)", scale: 1.1 }
                         }}
-                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                      />
-                      <div className="relative z-10 flex items-center gap-3">
-                        <motion.span 
-                          className="font-mono text-[10px] text-signal"
+                        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                      >
+                        <motion.span
                           variants={{
-                            rest: { opacity: 0, width: 0 },
-                            hover: { opacity: 1, width: "auto" }
+                            rest: { color: "rgba(255,255,255,0.5)" },
+                            hover: { color: "var(--color-signal)" }
                           }}
                         >
-                          ◆
+                          {String(i + 1).padStart(2, "0")}
                         </motion.span>
-                        <motion.span 
-                          className="font-sans text-base"
+                        {/* Glow ring behind circle */}
+                        <motion.div
+                          className="absolute inset-0 rounded-full bg-signal/0 blur-md"
                           variants={{
-                            rest: { x: 0, color: "var(--color-paper)" },
-                            hover: { x: 4, color: "var(--color-signal)" }
+                            rest: { opacity: 0 },
+                            hover: { opacity: 0.3, backgroundColor: "var(--color-signal)" }
                           }}
-                          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                        />
+                      </motion.div>
+
+                      <div className="flex-1 min-w-0">
+                        <motion.p 
+                          className="font-sans text-[15px] font-medium leading-snug"
+                          variants={{
+                            rest: { color: "var(--color-paper)" },
+                            hover: { color: "var(--color-signal)" }
+                          }}
+                          transition={{ duration: 0.25 }}
                         >
                           {a.name}
+                        </motion.p>
+                        <motion.span 
+                          className="mt-1 inline-block font-mono text-[10px] uppercase tracking-[0.2em] rounded-full px-2 py-0.5"
+                          variants={{
+                            rest: { opacity: 0.4, backgroundColor: "transparent" },
+                            hover: { opacity: 1, backgroundColor: "color-mix(in oklch, var(--color-signal) 15%, transparent)" }
+                          }}
+                        >
+                          {a.year}
                         </motion.span>
                       </div>
+
+                      {/* Arrow */}
                       <motion.span 
-                        className="relative z-10 font-mono text-xs shrink-0"
+                        className="text-signal text-lg mt-1 shrink-0"
                         variants={{
-                          rest: { opacity: 0.4 },
-                          hover: { opacity: 1 }
+                          rest: { opacity: 0, x: -8 },
+                          hover: { opacity: 1, x: 0 }
                         }}
+                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
                       >
-                        {a.year}
+                        ↗
                       </motion.span>
-                    </motion.li>
-                  </FadeIn>
+                    </motion.div>
+                  </StaggerItem>
                 ))}
-              </ul>
+              </StaggerList>
             </div>
           </div>
         </div>
