@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import HeroScene from "../components/HeroScene";
 import { FadeIn, StaggerList, StaggerItem, AnimatedCounter, MagneticLink, motion } from "../components/motion";
 import { SpotlightCard } from "../components/SpotlightCard";
+import { TrackRecord } from "../components/TrackRecord";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -558,67 +559,7 @@ function Index() {
       </section>
 
       {/* track record */}
-      <section className="bg-paper text-ink">
-        <div className="mx-auto max-w-[1400px] px-6 py-20">
-          <div className="mb-12 flex flex-wrap items-end justify-between gap-6 border-b border-ink/10 pb-6">
-            <FadeIn direction="left">
-              <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-signal">
-                Track record
-              </p>
-              <h2 className="text-balance font-display text-[clamp(2.5rem,6vw,5rem)] font-medium leading-none tracking-[-0.02em]">
-                A career built around better decisions.
-              </h2>
-            </FadeIn>
-            <span className="pb-2 font-mono text-xs uppercase tracking-[0.2em] text-mute">
-              2022 → present · 06 roles
-            </span>
-          </div>
-
-          <ol className="relative ml-[7px] border-l border-ink/15 md:ml-0 md:border-l-0">
-            {roles.map((r, i) => (
-              <FadeIn
-                key={r.title + r.period}
-                direction="left"
-                className="group relative grid grid-cols-12 gap-x-6 gap-y-3 pb-10 pl-7 md:pl-0"
-              >
-                {/* rail marker (mobile) — glows on hover */}
-                <span className="absolute top-2 -left-[5px] size-[9px] rounded-full bg-ink/25 transition-all duration-500 group-hover:bg-signal group-hover:scale-[1.8] group-hover:shadow-[0_0_14px_var(--color-signal)] md:hidden" />
-
-                {/* Expanding background highlight on hover */}
-                <motion.div
-                  className="pointer-events-none absolute -left-4 -right-4 -top-2 -bottom-2 rounded-2xl bg-ink/[0.02] opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:-left-6 md:-right-6"
-                />
-
-                <div className="relative z-10 col-span-12 md:col-span-3 md:border-l md:border-ink/15 md:pl-6 md:transition-all md:duration-500 md:group-hover:border-signal md:group-hover:pl-8">
-                  {/* Number badge */}
-                  <span className="inline-flex items-center justify-center size-7 rounded-full bg-ink/5 font-mono text-[10px] tracking-[0.15em] text-ink/40 transition-all duration-300 group-hover:bg-signal/15 group-hover:text-signal">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-2 font-mono text-sm text-ink/50 transition-colors duration-300 group-hover:text-ink/80">{r.period}</p>
-                </div>
-
-                <div className="relative z-10 col-span-12 md:col-span-5">
-                  <h3 className="font-sans text-xl leading-tight font-semibold tracking-[-0.01em] transition-colors duration-300 group-hover:text-signal md:text-2xl">
-                    {r.title}
-                  </h3>
-                  <p className="mt-1.5 font-mono text-xs uppercase tracking-[0.15em] text-ink/40 transition-colors duration-300 group-hover:text-ink/60">
-                    {r.org}
-                  </p>
-                </div>
-
-                <div className="relative z-10 col-span-12 md:col-span-4">
-                  <p className="max-w-[46ch] text-pretty font-sans text-sm leading-relaxed text-ink/55 transition-all duration-300 group-hover:text-ink/85 group-hover:translate-x-1">
-                    {r.note}
-                  </p>
-                </div>
-
-                {/* Gradient accent line at bottom */}
-                <div className="absolute -bottom-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-signal/0 to-transparent transition-all duration-500 group-hover:via-signal/60" />
-              </FadeIn>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <TrackRecord roles={roles} />
 
 
       {/* certs + awards */}

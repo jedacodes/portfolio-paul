@@ -4,6 +4,7 @@ import {
   useInView,
   useMotionValue,
   useTransform,
+  useScroll,
   animate,
   type Variants,
 } from "framer-motion";
@@ -210,4 +211,4 @@ export function MagneticLink({
 
 /* ── Re-export motion for convenience ────────────────────── */
 
-export { motion, useInView };
+export { motion, useInView, useScroll, useTransform, useMotionValue };
